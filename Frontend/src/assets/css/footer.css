@@ -1,0 +1,4 @@
+.bg-orange {
+    background: rgb(255, 106, 0);
+    background: linear-gradient(90deg, rgba(255, 106, 0, 1) 0%, rgba(255, 153, 6, 1) 50%, rgba(255, 196, 0, 1) 100%);
+}
