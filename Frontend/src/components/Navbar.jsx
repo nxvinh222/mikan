@@ -17,40 +17,37 @@ export default class Navbar extends Component {
                             />
                         </a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon" />
+                            <span className="navbar-toggler-icon align-center" />
                         </button>
                         {/* Function List */}
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="#store">STORE</a>
+                                    <a className="nav-link js-scroll-trigger" href="#store">
+                                        <i className="fas fa-eye"></i> Tổng quan</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="#staff">STAFF</a>
+                                    <a className="nav-link js-scroll-trigger" href="#store">
+                                        <i className="fas fa-store"></i> Cửa hàng</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="#product">PRODUCT</a>
+                                    <a className="nav-link js-scroll-trigger" href="#staff">
+                                        <i className="fas fa-user-friends"></i> Nhân viên</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link js-scroll-trigger" href="#product">
+                                        <i className="fas fa-cube"></i> Hàng hóa</a>
                                 </li>
                             </ul>
-                        </div>
-                        {/* Login Button */}
-                        <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-                            SIGN IN <i className="fas fa-user" style={{ fontSize: '1rem', color: 'white' }} />
-                        </button>
-                        {/* Modal */}
-                        <div className="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div className="modal-dialog modal-dialog-centered" role="document">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" className="btn btn-primary">Save changes</button>
-                                    </div>
+                            {/* Account Button */}
+                            <div className="account dropdown ml-auto">
+                                <button type="button" className="btn btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-lock"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item"><b>admin</b></a>
+                                    <a class="dropdown-item" href="#"><i className="fas fa-user"></i> Tài khoản</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                                 </div>
                             </div>
                         </div>
