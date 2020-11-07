@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Login from './layout/Login'
+import Login from './containers/Login'
 import "./App.css";
+import AdminDashboard from './containers/AdminDashboard';
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
             <Switch>
               <Route exact path="/" render={(props) => {
                 return <Login/>
+              }} />
+              <Route exact path="/das" render={(props) => {
+                return <AdminDashboard/>
               }} />
             </Switch>
           </React.Suspense>
