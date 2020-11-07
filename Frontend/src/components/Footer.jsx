@@ -7,7 +7,7 @@ export default class Footer extends Component {
         return (
             <div>
                 {/* Footer */}
-                <footer className="py-3 bg-dark fixed-bottom">
+                <footer className="py-3 bg-dark">
                     <div className="container">
                         <p className="m-0 text-center text-white">Copyright © MIKAN 2020</p>
                     </div>

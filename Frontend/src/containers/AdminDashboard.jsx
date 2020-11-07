@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-
 export default class AdminDashboard extends Component {
     render() {
         return (

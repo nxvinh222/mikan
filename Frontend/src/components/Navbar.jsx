@@ -7,7 +7,7 @@ export default class Navbar extends Component {
         return (
             <div>
                 {/* Navigation */}
-                <nav className="navbar navbar-expand-lg bg-orange navbar-dark fixed-top" id="mainNav">
+                <nav className="navbar navbar-expand-lg bg-orange navbar-dark" id="mainNav">
                     <div className="container navbar-container">
                         <a className="navbar-brand js-scroll-trigger" href="#page-top">
                             <img
