@@ -5,6 +5,7 @@ import '../assets/css/login.css'
 export default class Login extends Component {
     render() {
         return (
+            <div className="container-signin">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-10 col-xl-9 mx-auto">
@@ -35,6 +36,7 @@ export default class Login extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         )
     }
