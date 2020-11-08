@@ -30,7 +30,6 @@ export default class ManagerDashboard extends Component {
                     <button type="submit" className="btn btn-dark" data-toggle="modal" data-target="#addModal">
                         <i className="fas fa-plus" />
                     </button>
-                    <AddProductModal/>
                 </div>
                 <div className="row">
                     <div className="col-12">
@@ -114,7 +113,6 @@ export default class ManagerDashboard extends Component {
                                                                         <a href="#editModal" className="trigger-btn" data-toggle="modal">
                                                                             <i className="fas fa-edit" />
                                                                         </a>
-                                                                        <EditProductModal/>
                                                                         <span> | </span>
                                                                         <a href="#myModal" className="trigger-btn" data-toggle="modal">
                                                                             <i className="fas fa-trash-alt" />
@@ -505,8 +503,12 @@ export default class ManagerDashboard extends Component {
                         </div>
                     </div>
                 </div>
-
-                {/*  Modal HTML */}
+                
+                {/*  Add Modal*/}
+                <AddProductModal/>
+                {/* Edit Modal */}
+                <EditProductModal/>
+                {/*  Delete Modal*/}
                 <div id="myModal" class="modal fade">
                     <div class="modal-dialog modal-confirm">
                         <div class="modal-content">

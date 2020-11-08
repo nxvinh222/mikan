@@ -8,6 +8,7 @@ import AdminDashboard from './containers/AdminDashboard';
 import ManagerDashboard from './containers/ManagerDashboard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import StoreList from './containers/StoreList';
 
 function App() {
   return (
@@ -21,22 +22,29 @@ function App() {
             <Route exact path="/admin" render={(props) => {
               return (
                 <div>
-                  <Navbar/>
+                  <Navbar />
                   <AdminDashboard />
-                  <Footer/>
+                  <Footer />
                 </div>
               )
-
             }} />
             <Route exact path="/manager" render={(props) => {
               return (
                 <div>
-                  <Navbar/>
+                  <Navbar />
                   <ManagerDashboard />
-                  <Footer/>
+                  <Footer />
                 </div>
               )
-
+            }} />
+            <Route exact path="/admin/store" render={(props) => {
+              return (
+                <div>
+                  <Navbar />
+                  <StoreList />
+                  <Footer />
+                </div>
+              )
             }} />
           </Switch>
         </React.Suspense>

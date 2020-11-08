@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import logo from '../assets/img/MIKAN-logo.png';
 
 import '../assets/css/navbar.css'
 
@@ -11,7 +12,7 @@ export default class Navbar extends Component {
                     <div className="container navbar-container">
                         <a className="navbar-brand js-scroll-trigger" href="#page-top">
                             <img
-                                src="img/MIKAN-logo.png"
+                                src={logo}
                                 height="60rem"
                                 alt="Mikan Logo"
                             />
