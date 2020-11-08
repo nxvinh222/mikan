@@ -46,8 +46,8 @@ export default class Navbar extends Component {
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item"><b>admin</b></a>
-                                    <a class="dropdown-item" href="#"><i className="fas fa-user"></i> Tài khoản</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                                    <a class="dropdown-item" href=""><i className="fas fa-user"></i> Tài khoản</a>
+                                    <a class="dropdown-item" href=""><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                                 </div>
                             </div>
                         </div>

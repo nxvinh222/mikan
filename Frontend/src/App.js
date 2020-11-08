@@ -5,6 +5,7 @@ import "./App.css";
 
 import Login from './containers/Login'
 import AdminDashboard from './containers/AdminDashboard';
+import ManagerDashboard from './containers/ManagerDashboard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -22,6 +23,16 @@ function App() {
                 <div>
                   <Navbar/>
                   <AdminDashboard />
+                  <Footer/>
+                </div>
+              )
+
+            }} />
+            <Route exact path="/manager" render={(props) => {
+              return (
+                <div>
+                  <Navbar/>
+                  <ManagerDashboard />
                   <Footer/>
                 </div>
               )
