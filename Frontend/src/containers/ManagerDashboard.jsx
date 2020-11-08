@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import '../assets/css/table.css'
 import '../assets/css/delconfirm-modal.css'
+
+import AddProductModal from '../components/AddProductModal'
+
 export default class ManagerDashboard extends Component {
     render() {
         return (
@@ -23,9 +26,10 @@ export default class ManagerDashboard extends Component {
                             </button>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-dark">
+                    <button type="submit" className="btn btn-dark" data-toggle="modal" data-target="#exampleModalLong">
                         <i className="fas fa-plus" />
                     </button>
+                    <AddProductModal/>
                 </div>
                 <div className="row">
                     <div className="col-12">
