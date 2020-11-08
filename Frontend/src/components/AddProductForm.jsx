@@ -55,7 +55,7 @@ export default class AddProductFrom extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    < button type="submit" className="btn btn-success add-button">Thêm</button>
+                                    < button type="submit" className="btn btn-success add-button">Lưu</button>
                                 </div>
                             </div>
 

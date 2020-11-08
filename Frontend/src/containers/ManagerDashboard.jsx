@@ -3,6 +3,7 @@ import '../assets/css/table.css'
 import '../assets/css/delconfirm-modal.css'
 
 import AddProductModal from '../components/AddProductModal'
+import EditProductModal from '../components/EditProductModal'
 
 export default class ManagerDashboard extends Component {
     render() {
@@ -26,7 +27,7 @@ export default class ManagerDashboard extends Component {
                             </button>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-dark" data-toggle="modal" data-target="#exampleModalLong">
+                    <button type="submit" className="btn btn-dark" data-toggle="modal" data-target="#addModal">
                         <i className="fas fa-plus" />
                     </button>
                     <AddProductModal/>
@@ -110,13 +111,15 @@ export default class ManagerDashboard extends Component {
                                                                 </td>
                                                                 <td>
                                                                     <div className="widget-26-job-starred">
-                                                                        <a href="#">
+                                                                        <a href="#editModal" className="trigger-btn" data-toggle="modal">
                                                                             <i className="fas fa-edit" />
                                                                         </a>
+                                                                        <EditProductModal/>
                                                                         <span> | </span>
                                                                         <a href="#myModal" className="trigger-btn" data-toggle="modal">
                                                                             <i className="fas fa-trash-alt" />
                                                                         </a>
+                                                                        
                                                                     </div>
                                                                 </td>
                                                             </tr>

@@ -1,23 +1,17 @@
 import React, { Component } from 'react'
 import AddProductForm from './AddProductForm'
 
-// import '../assets/css/addmodal.css'
-
-export default class AddProductModal extends Component {
+export default class EditProductModal extends Component {
     render() {
         return (
             <div>
-                {/* Button trigger modal */}
-                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#addModal">
-                    Thêm sản phẩm
-                </button> */}
                 {/* Modal */}
-                <div className="modal fade add-modal" id="addModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div className="modal fade add-modal" id="editModal" tabIndex={-1} role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
                     <div className="modal-dialog" role="document" style={{ maxWidth: "40vw" }}>
                         <div className="modal-content">
                             <div className="modal-header" style={{ backgroundColor: "#47c9a2", color: "white" }}>
-                                <h5 className="modal-title" id="exampleModalLongTitle">
-                                    <i class="fas fa-plus-circle"></i> Thêm sản phẩm</h5>
+                                <h5 className="modal-title" id="editModalTitle">
+                                    <i class="fas fa-plus-circle"></i> Sửa thông tin sản phẩm</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
