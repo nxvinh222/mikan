@@ -141,6 +141,11 @@
   margin-bottom: 2rem;
 }
 
+.search-body .search-result .result-header .row .col-lg-6, .result-views svg {
+  line-height: 3rem;
+  vertical-align: middle;
+}
+
 .search-body .search-result .result-header .records {
   color: #3c4142;
 }
