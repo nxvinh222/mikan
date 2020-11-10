@@ -4,7 +4,7 @@ class StoreInfo extends Component {
     render() {
         return (
             <div>
-                This is Store Info.
+                This is S 2tore Info.
             </div>
         );
     }
