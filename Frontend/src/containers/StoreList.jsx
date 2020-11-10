@@ -4,12 +4,84 @@ import '../assets/css/store.css'
 import DelConfirmModal from '../components/DelConfirmModal'
 import storeData from '../data/storeList'
 
+const pageSize = 2;
+
 export default class StoreList extends Component {
-    state = {
-        storeData: storeData
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            total: 0,
+            results: [],
+            currentPageNumber: 1,
+            maxPageNumber: 1
+        }
+        this.getData(1);
+    }
+
+    getData = async (pageNumber) => {
+        try {
+            // const data = await fetch(`https://guarded-inlet-73441.herokuapp.com/posts/get/posts?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+            //     {
+            //         method: 'GET',
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         },
+            //         credentials: 'include'
+            //     }
+            // ).then((res) => { return res.json(); });
+
+            // TODO: day la lay du lieu gia (pseudo data)
+            const data =  await storeData;
+            console.log(data);
+
+            // this.setState({
+            //     total: data.data.total,
+            //     results: data.data.results,
+            //     maxPageNumber: Math.ceil(data.data.total / pageSize)
+
+            this.setState({
+                total: data.length,
+                results: data,
+                maxPageNumber: Math.ceil(data.length / pageSize)
+            });
+            console.log(this.state);
+
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    handlePageChange = (pageNumber) => {
+        this.getData(pageNumber);
+        this.setState({
+            currentPageNumber: pageNumber
+        });
+    }
+
+    handlePrevClick = () => {
+        if (this.state.currentPageNumber > 1) {
+            this.getData(this.state.currentPageNumber - 1);
+            this.setState({
+                currentPageNumber: (this.state.currentPageNumber - 1)
+            });
+        }
+    }
+
+    handleNextClick = () => {
+        if (this.state.currentPageNumber < this.state.maxPageNumber) {
+            this.getData(this.state.currentPageNumber + 1);
+            this.setState({
+                currentPageNumber: (this.state.currentPageNumber + 1)
+            });
+        }
     }
 
     render() {
+        const paginations = [];
+        for (let i = 1; i <= this.state.maxPageNumber; i++)
+            paginations.push(i);
+
         return (
             <div className="container">
                 {/* Toolbar: Filter & Search*/}
@@ -38,7 +110,7 @@ export default class StoreList extends Component {
 
                 <div className="row">
                     <div className="col-lg-12">
-                        <div className="records">Showing: <b>1-20</b> of <b>200</b> result</div>
+        <div className="records">Hiển thị: <b>{(this.state.currentPageNumber-1)*pageSize+1}-{pageSize*this.state.currentPageNumber}</b> of <b>{this.state.total}</b> kết quả</div>
                     </div>
                 </div>
 
@@ -46,7 +118,7 @@ export default class StoreList extends Component {
                 <div className="row d-flex justify-content-center store-list">
                     <div className="col-12">
                         {/* Store Card */}
-                        {this.state.storeData.map((store) => {
+                        {this.state.results.map((store) => {
                             return (
                                 <div>
                                     <div className="card">
@@ -99,6 +171,7 @@ export default class StoreList extends Component {
                                         </div>
                                     </div>
                                     {/* End Store Card */}
+                                    {}
                                     <hr />
                                 </div>
                             );
@@ -110,17 +183,25 @@ export default class StoreList extends Component {
                 {/* Pagination */}
                 <nav className="d-flex justify-content-center mb-4">
                     <ul className="pagination pagination-base pagination-boxed pagination-square mb-0">
-                        <li className="page-item">
+                        <li className={`page-item ${this.state.currentPageNumber === 1 ? 'disabled' : ''}`}
+                            onClick={this.handlePrevClick}>
                             <a className="page-link no-border" href="#">
                                 <span aria-hidden="true">«</span>
                                 <span className="sr-only">Previous</span>
                             </a>
                         </li>
-                        <li className="page-item active"><a className="page-link no-border" href="#">1</a></li>
-                        <li className="page-item"><a className="page-link no-border" href="#">2</a></li>
-                        <li className="page-item"><a className="page-link no-border" href="#">3</a></li>
-                        <li className="page-item"><a className="page-link no-border" href="#">4</a></li>
-                        <li className="page-item">
+                        {paginations.map((item) => {
+                            return (
+                                <li className={`page-item ${item === this.state.currentPageNumber ? 'active' : ''}`}
+                                    key={item}
+                                    onClick={() => { this.handlePageChange(item) }}
+                                >
+                                    <a className="page-link" href="#">{item}</a>
+                                </li>
+                            );
+                        })}
+                        <li className={`page-item ${this.state.currentPageNumber === this.state.maxPageNumber ? 'disabled' : ''}`}
+                            onClick={this.handleNextClick}>
                             <a className="page-link no-border" href="#">
                                 <span aria-hidden="true">»</span>
                                 <span className="sr-only">Next</span>

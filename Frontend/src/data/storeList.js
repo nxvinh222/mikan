@@ -28,6 +28,16 @@ const storeData = [
             name: "Trần Anh Tuấn",
             phone: "98979989898"
         }
+    },
+    {
+        name: "Cửa hàng CIRCLE K Long Biên",
+        address: "152 - 154 Phó Đức Chính, Phường Trúc Bạch , Quận Ba Đình, Hà Nội",
+        hotline: "+84 24 3200 6087",
+        imgUrl: "https://www.circlek.com.vn/wp-content/uploads/2020/02/viber_image_2020-02-28_10-25-52-2.jpg",
+        manager: {
+            name: "Trần Anh Tuấn",
+            phone: "98979989898"
+        }
     }
 ];
 
