@@ -2,8 +2,13 @@ import React, { Component } from 'react'
 
 import '../assets/css/store.css'
 import DelConfirmModal from '../components/DelConfirmModal'
+import storeData from '../data/storeList'
 
 export default class StoreList extends Component {
+    state = {
+        storeData: storeData
+    }
+
     render() {
         return (
             <div className="container">
@@ -41,156 +46,63 @@ export default class StoreList extends Component {
                 <div className="row d-flex justify-content-center store-list">
                     <div className="col-12">
                         {/* Store Card */}
-                        <div className="card">
-                            <div className="row">
-                                <div className="col-5 store-img">
-                                    <a href="">
-                                        <img src="https://www.circlek.com.vn/wp-content/uploads/2020/02/a9322ffbf5bd0ee357ac-2.jpg" alt="Store Image" />
-                                    </a>
-                                </div>
-                                <div className="col-sm-7">
-                                    <div className="card-block">
-                                        <div class="row m-b-20 m-t-30">
-                                            <div className="col-8">
-                                                <h4 className="store-title">Cửa hàng CIRCLE K Long Biên</h4>
+                        {this.state.storeData.map((store) => {
+                            return (
+                                <div>
+                                    <div className="card">
+                                        <div className="row">
+                                            <div className="col-5 store-img">
+                                                <a href="">
+                                                    <img src={store.imgUrl} alt="Store Image" />
+                                                </a>
                                             </div>
-                                            <div className="col-4">
-                                                <div className="store-btn">
-                                                    <button type="button" className="btn btn-outline-success btn-sm"><i className="fas fa-eye"></i></button>
-                                                    <button type="button" className="btn btn-outline-danger btn-sm "><i className="fas fa-edit"></i></button>
-                                                    <button type="button" className="btn btn-outline-secondary btn-sm"  data-toggle="modal" data-target="#myModal">
-                                                        <i className="fas fa-trash-alt"></i>
-                                                        </button>
+                                            <div className="col-sm-7">
+                                                <div className="card-block">
+                                                    <div class="row m-b-20 m-t-30">
+                                                        <div className="col-8">
+                                                            <h4 className="store-title">{store.name}</h4>
+                                                        </div>
+                                                        <div className="col-4">
+                                                            <div className="store-btn">
+                                                                <button type="button" className="btn btn-outline-success btn-sm"><i className="fas fa-eye"></i></button>
+                                                                <button type="button" className="btn btn-outline-danger btn-sm "><i className="fas fa-edit"></i></button>
+                                                                <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                    <i className="fas fa-trash-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h6 className="m-b-20 m-t-30 p-b-5 b-b-default f-w-600">Thông tin cửa hàng</h6>
+                                                    <div className="row">
+                                                        <div className="col-sm-6">
+                                                            <p className="m-b-10 f-w-600">Địa chỉ</p>
+                                                            <h6 className="text-muted f-w-400">{store.address}</h6>
+                                                        </div>
+                                                        <div className="col-sm-6">
+                                                            <p className="m-b-10 f-w-600">Hotline</p>
+                                                            <h6 className="text-muted f-w-400">{store.hotline}</h6>
+                                                        </div>
+                                                    </div>
+                                                    <h6 className="m-b-20 m-t-30 p-b-5 b-b-default f-w-600">Nhân viên quản lý</h6>
+                                                    <div className="row">
+                                                        <div className="col-sm-6">
+                                                            <p className="m-b-10 f-w-600">Tên</p>
+                                                            <h6 className="text-muted f-w-400">{store.manager.name}</h6>
+                                                        </div>
+                                                        <div className="col-sm-6">
+                                                            <p className="m-b-10 f-w-600">Số điện thoại</p>
+                                                            <h6 className="text-muted f-w-400">{store.manager.phone}</h6>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <h6 className="m-b-20 m-t-30 p-b-5 b-b-default f-w-600">Thông tin cửa hàng</h6>
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Địa chỉ</p>
-                                                <h6 className="text-muted f-w-400">152 - 154 Phó Đức Chính, Phường Trúc Bạch , Quận Ba Đình, Hà Nội</h6>
-                                            </div>
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Hotline</p>
-                                                <h6 className="text-muted f-w-400">+84 24 3200 6087</h6>
-                                            </div>
-                                        </div>
-                                        <h6 className="m-b-20 m-t-30 p-b-5 b-b-default f-w-600">Nhân viên quản lý</h6>
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Tên</p>
-                                                <h6 className="text-muted f-w-400">Trần Anh Tuấn</h6>
-                                            </div>
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Số điện thoại</p>
-                                                <h6 className="text-muted f-w-400">98979989898</h6>
-                                            </div>
-                                        </div>
                                     </div>
+                                    {/* End Store Card */}
+                                    <hr />
                                 </div>
-                            </div>
-                        </div>
-                        {/* End Store Card */}
-                        <hr />
-                        {/* Store Card */}
-                        <div className="card">
-                            <div className="row">
-                                <div className="col-5 store-img">
-                                    <a href="">
-                                        <img src="https://www.circlek.com.vn/wp-content/uploads/2020/02/viber_image_2020-02-28_10-25-52-2.jpg" alt="Store Image" />
-                                    </a>
-                                </div>
-                                <div className="col-sm-7">
-                                    <div className="card-block">
-                                        <div class="row m-b-20 m-t-30">
-                                            <div className="col-8">
-                                                <h4 className="store-title">Cửa hàng CIRCLE K Long Biên</h4>
-                                            </div>
-                                            <div className="col-4">
-                                                <div className="store-btn">
-                                                    <button type="button" className="btn btn-outline-success btn-sm"><i className="fas fa-eye"></i></button>
-                                                    <button type="button" className="btn btn-outline-danger btn-sm "><i className="fas fa-edit"></i></button>
-                                                    <button type="button" className="btn btn-outline-secondary btn-sm"><i className="fas fa-trash-alt"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <h6 className="m-b-20 m-t-30 p-b-5 b-b-default f-w-600">Thông tin cửa hàng</h6>
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Địa chỉ</p>
-                                                <h6 className="text-muted f-w-400">152 - 154 Phó Đức Chính, Phường Trúc Bạch , Quận Ba Đình, Hà Nội</h6>
-                                            </div>
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Hotline</p>
-                                                <h6 className="text-muted f-w-400">+84 24 3200 6087</h6>
-                                            </div>
-                                        </div>
-                                        <h6 className="m-b-20 m-t-30 p-b-5 b-b-default f-w-600">Nhân viên quản lý</h6>
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Tên</p>
-                                                <h6 className="text-muted f-w-400">Trần Anh Tuấn</h6>
-                                            </div>
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Số điện thoại</p>
-                                                <h6 className="text-muted f-w-400">98979989898</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* End Store Card */}
-                        <hr />
-                        {/* Store Card */}
-                        <div className="card">
-                            <div className="row">
-                                <div className="col-5 store-img">
-                                    <a href="">
-                                        <img src="https://vinatechjsc.vn/wp-content/uploads/2019/10/chu%E1%BB%97i-c%E1%BB%ADa-h%C3%A0ng-Circle-K-1024x768.jpg" alt="Store Image" />
-                                    </a>
-                                </div>
-                                <div className="col-sm-7">
-                                    <div className="card-block">
-                                        <div class="row m-b-20 m-t-30">
-                                            <div className="col-8">
-                                                <h4 className="store-title">Cửa hàng CIRCLE K Long Biên</h4>
-                                            </div>
-                                            <div className="col-4">
-                                                <div className="store-btn">
-                                                    <button type="button" className="btn btn-outline-success btn-sm"><i className="fas fa-eye"></i></button>
-                                                    <button type="button" className="btn btn-outline-danger btn-sm "><i className="fas fa-edit"></i></button>
-                                                    <button type="button" className="btn btn-outline-secondary btn-sm"><i className="fas fa-trash-alt"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <h6 className="m-b-20 m-t-30 p-b-5 b-b-default f-w-600">Thông tin cửa hàng</h6>
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Địa chỉ</p>
-                                                <h6 className="text-muted f-w-400">152 - 154 Phó Đức Chính, Phường Trúc Bạch , Quận Ba Đình, Hà Nội</h6>
-                                            </div>
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Hotline</p>
-                                                <h6 className="text-muted f-w-400">+84 24 3200 6087</h6>
-                                            </div>
-                                        </div>
-                                        <h6 className="m-b-20 m-t-30 p-b-5 b-b-default f-w-600">Nhân viên quản lý</h6>
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Tên</p>
-                                                <h6 className="text-muted f-w-400">Trần Anh Tuấn</h6>
-                                            </div>
-                                            <div className="col-sm-6">
-                                                <p className="m-b-10 f-w-600">Số điện thoại</p>
-                                                <h6 className="text-muted f-w-400">98979989898</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* End Store Card */}
+                            );
+                        })}
                     </div>
                 </div>
                 {/* End Store List */}
@@ -218,7 +130,7 @@ export default class StoreList extends Component {
                 </nav>
 
                 {/* Modal */}
-                <DelConfirmModal/>
+                <DelConfirmModal />
             </div>
         )
     }
