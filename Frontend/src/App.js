@@ -8,7 +8,7 @@ import AdminDashboard from './containers/AdminDashboard';
 import ManagerDashboard from './containers/ManagerDashboard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import StoreList from './containers/StoreList';
+import StoreInfo from './components/StoreInfo';
 
 function App() {
   return (
@@ -20,28 +20,16 @@ function App() {
               return <Login />
             }} />
             <Route exact path="/admin" render={(props) => {
-              return (
-                <div>
-                  <Navbar />
-                  <AdminDashboard />
-                  <Footer />
-                </div>
-              )
+              return <AdminDashboard />
+            }} />
+            <Route path="/admin/store/" render={(props) => {
+              return <StoreInfo />
             }} />
             <Route exact path="/manager" render={(props) => {
               return (
                 <div>
                   <Navbar />
                   <ManagerDashboard />
-                  <Footer />
-                </div>
-              )
-            }} />
-            <Route exact path="/admin/store" render={(props) => {
-              return (
-                <div>
-                  <Navbar />
-                  <StoreList />
                   <Footer />
                 </div>
               )

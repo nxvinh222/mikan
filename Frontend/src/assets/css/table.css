@@ -221,7 +221,6 @@
 
 .tool-bar {
   display: flex;
-  margin: 5% 0;
   justify-content: space-between;
   height: 3rem;
 }

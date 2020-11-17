@@ -4,12 +4,20 @@
 
 /* Store List CSS */
 
-.card {
+.main-containter{
+    /* padding: 1-%; */
+    background-color: white;
+    padding: 2% 5%;
+    /* margin: 2%;
+    border-radius: 5px; */
+}
+
+.store-card, .main-containter {
     border-radius: 5px;
     -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-    border: none;
-    margin: 3rem 0;
+    border: 0px 1px 1px 0px solid;
+    margin: 1.5rem 0;
 }
 
 .m-r-0 {
