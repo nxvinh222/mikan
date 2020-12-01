@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_112442) do
+ActiveRecord::Schema.define(version: 2020_12_01_081252) do
+
+  create_table "employees", force: :cascade do |t|
+    t.integer "shop_id"
+    t.string "name"
+    t.string "phone"
+    t.string "id_card"
+    t.string "role"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "item_quantities", force: :cascade do |t|
+    t.integer "shop_id"
+    t.integer "item_id"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "item_name"
+    t.integer "price"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "revenues", force: :cascade do |t|
+    t.integer "shop_id"
+    t.integer "item_id"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "shops", force: :cascade do |t|
     t.string "shop_name"
