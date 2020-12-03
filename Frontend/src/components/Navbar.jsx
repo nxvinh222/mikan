@@ -55,8 +55,8 @@ export default class Navbar extends Component {
                                     <i class="fas fa-user-lock"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item"><b>{window.localStorage.getItem('username')}</b></a>
-                                    <a class="dropdown-item" href=""><i className="fas fa-user"></i> Tài khoản</a>
+                                    <a class="dropdown-item" href="/"><b>{window.localStorage.getItem('username')}</b></a>
+                                    <a class="dropdown-item" href="/"><i className="fas fa-user"></i> Tài khoản</a>
                                     <a class="dropdown-item" href="/" onClick={this.signOut}><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                                 </div>
                             </div>
