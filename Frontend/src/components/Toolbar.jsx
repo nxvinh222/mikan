@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 class Toolbar extends Component {
     render() {
         return (
-            <div class="main-containter">
+            <div className="main-containter">
                 <div className="tool-bar">
                     <div className="filter">
-                        <select class="custom-select">
+                        <select className="custom-select">
                             <option selected>Khu vực</option>
                             <option value="1">Hà Nội</option>
                             <option value="2">Hải Phòng</option>
@@ -17,7 +17,7 @@ class Toolbar extends Component {
                         <input type="text" className="form-control" placeholder="Tìm kiếm..." aria-label="" aria-describedby="button-addon2" />
                         <div className="input-group-append">
                             <button className="btn btn-base" type="button" id="button-addon2">
-                                <i class="fas fa-search"></i>
+                                <i className="fas fa-search"></i>
                             </button>
                         </div>
                     </div>

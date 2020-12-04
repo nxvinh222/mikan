@@ -35,7 +35,7 @@ export default class EditStoreModal extends Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLongTitle">
-                                    <i class="fas fa-plus-circle"></i> Sửa thông tin cửa hàng</h5>
+                                    <i className="fas fa-plus-circle"></i> Sửa thông tin cửa hàng</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -43,51 +43,51 @@ export default class EditStoreModal extends Component {
                             <div className="modal-body">
                                 <form className="container">
                                     <div className="form-group row">
-                                        <label htmlFor="store-name" class="col-sm-4 col-form-label">Tên cửa hàng</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="store-name" className="col-sm-4 col-form-label">Tên cửa hàng</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="store-name" value={this.state.store.name}/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="address" class="col-sm-4 col-form-label">Địa chỉ</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="address" className="col-sm-4 col-form-label">Địa chỉ</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="address" value={this.state.store.address}/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="hotline" class="col-sm-4 col-form-label">Hotline</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="hotline" className="col-sm-4 col-form-label">Hotline</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="hotline" value={this.state.store.hotline}/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="hotline" class="col-sm-4 col-form-label">Ảnh</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="hotline" className="col-sm-4 col-form-label">Ảnh</label>
+                                        <div className="col-sm-8">
                                             <input type="file" id="storeImage" />
                                         </div>
                                     </div>
                                     <hr />
                                     <div className="form-group row">
-                                        <label htmlFor="manager" class="col-sm-4 col-form-label">Tên quản lý</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="manager" className="col-sm-4 col-form-label">Tên quản lý</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="manager" value=""/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="manager-phone" class="col-sm-4 col-form-label">Số điện thoại</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="manager-phone" className="col-sm-4 col-form-label">Số điện thoại</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="manager-phone" value=""/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="account" class="col-sm-4 col-form-label">Tài khoản</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="account" className="col-sm-4 col-form-label">Tài khoản</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="account" />
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="password" class="col-sm-4 col-form-label">Mật khẩu</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="password" className="col-sm-4 col-form-label">Mật khẩu</label>
+                                        <div className="col-sm-8">
                                             <input type="password" className="form-control" id="password" />
                                         </div>
                                     </div>

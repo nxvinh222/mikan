@@ -17,7 +17,7 @@ export default class AddProductModal extends Component {
                         <div className="modal-content">
                             <div className="modal-header" style={{ backgroundColor: "#47c9a2", color: "white" }}>
                                 <h5 className="modal-title" id="exampleModalLongTitle">
-                                    <i class="fas fa-plus-circle"></i> Thêm sản phẩm</h5>
+                                    <i className="fas fa-plus-circle"></i> Thêm sản phẩm</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>

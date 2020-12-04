@@ -1,15 +1,34 @@
 import React, { Component } from 'react'
 import '../assets/css/table.css'
 import Toolbar from '../components/Toolbar'
+import axios from '../axios.js'
 
 class ProductInfo extends Component {
+
+    state = {
+
+    }
+
+    componentDidMount() {
+        axios
+        .get(`/v1/shops/1`)
+        .then( data => {
+            console.log(data)
+            // this.setState({
+            //     items: data.data
+            // })
+            console.log(this.state)
+        })
+        .catch( err => console.log(err))
+    }
+
     render() {
         return (
             <div className="container">
                 <Toolbar />
                 <div className="row">
                     <div className="col-12">
-                        <div class="card card-employee card-margin">
+                        <div className="card card-employee card-margin">
                             <div className="card-body">
                                 <div className="row search-body">
                                     <div className="col-lg-12">

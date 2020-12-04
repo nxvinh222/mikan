@@ -79,7 +79,7 @@ class StoreInfo extends Component {
                                 <a href="javascript:void(0);">109 customer reviews</a>
                             </h2>
                             <hr />
-                            <button type="button" class="btn btn-dark"><span><i className="fas fa-phone-alt" /></span>Gọi để đặt bàn<span className="text-bold font18 pl-2">0981524316</span></button>
+                            <button type="button" className="btn btn-dark"><span><i className="fas fa-phone-alt" /></span>Gọi để đặt bàn<span className="text-bold font18 pl-2">0981524316</span></button>
                             <div><span><i className="far fa-clock" /></span>: 8h30 - 12h</div>
                             <div><span><i className="fas fa-dollar-sign" /></span>: Giá trung bình: 100,000 - 200,000 đ</div>
                             <hr />
@@ -187,7 +187,7 @@ class StoreInfo extends Component {
                             <hr />
                             <div className="row">
                                 <div className="col-sm-12 col-md-6 col-lg-6">
-                                    <a href="javascript:void(0);" className="btn btn-success btn-lg"><span><i class="far fa-thumbs-up"></i></span>Like</a>
+                                    <a href="javascript:void(0);" className="btn btn-success btn-lg"><span><i className="far fa-thumbs-up"></i></span>Like</a>
                                 </div>
                                 <div className="col-sm-12 col-md-6 col-lg-6">
                                     <div className="btn-group pull-right">
