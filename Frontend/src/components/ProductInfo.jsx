@@ -9,23 +9,48 @@ import EditProductModal from './EditProductModal'
 class ProductInfo extends Component {
 
     state = {
-
+        items: []
     }
 
     componentDidMount() {
         axios
-            .get(`/v1/shops/1`)
+            .get(`/v1/shops/1/items`)
             .then(data => {
-                console.log("hesdfasd")
-                // this.setState({
-                //     items: data.data
-                // })
+                this.setState({
+                    items: data.data
+                })
                 console.log(this.state)
             })
             .catch(err => console.log(err))
     }
 
     render() {
+        const all_items = this.state.items.map(item =>
+            <tr>
+                <th scope="row">{item.id}</th>
+                <td className="w-25">
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/sheep-3.jpg" className="img-fluid img-thumbnail" alt="Sheep" />
+                </td>
+                <td>{item.item_name}</td>
+                <td>{item.price}$</td>
+                <td>{item.description}</td>
+                <td>{item.quantity}</td>
+                <td>
+                    <div className="widget-26-job-starred">
+                        <button type="button" className="btn btn-outline-danger btn-sm mr-2"
+                            // value={store.id} onClick={this.handleStoreChange}
+                            data-toggle="modal" data-target={`#EditItemModal${item.id}`}>
+                            <i className="fas fa-edit"></i></button>
+                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#DelItemModal${item.id}`}>
+                            <i className="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </td>
+                {/* Edit Modal */}
+                <EditProductModal item={item} />
+                {/*  Delete Modal*/}
+                <DelConfirmModal item={item} />
+            </tr>)
         return (
             <div className="container">
                 <Toolbar />
@@ -41,58 +66,17 @@ class ProductInfo extends Component {
                                                     <table className="table widget-26">
                                                         <thead className="thead-dark">
                                                             <tr>
-                                                                <th scope="col">STT</th>
+                                                                <th scope="col">ID</th>
                                                                 <th scope="col">Ảnh</th>
                                                                 <th scope="col">Tên sản phẩm</th>
                                                                 <th scope="col">Giá</th>
-                                                                <th scope="col">Xuất xứ</th>
+                                                                <th scope="col">Mô tả</th>
                                                                 <th scope="col">Số lượng</th>
                                                                 <th scope="col">Actions</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td className="w-25">
-                                                                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/sheep-3.jpg" className="img-fluid img-thumbnail" alt="Sheep" />
-                                                                </td>
-                                                                <td>Khô gà</td>
-                                                                <td>20000đ</td>
-                                                                <td>Việt Nam</td>
-                                                                <td>23</td>
-                                                                <td>
-                                                                    <div className="widget-26-job-starred">
-                                                                        <button type="button" className="btn btn-outline-danger btn-sm mr-2"
-                                                                            // value={store.id} onClick={this.handleStoreChange}
-                                                                            data-toggle="modal" data-target="#editModal">
-                                                                            <i className="fas fa-edit"></i></button>
-                                                                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
-                                                                            <i className="fas fa-trash-alt"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td className="w-25">
-                                                                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/sheep-5.jpg" className="img-fluid img-thumbnail" alt="Sheep" />
-                                                                </td>
-                                                                <td>Khô gà</td>
-                                                                <td>20000đ</td>
-                                                                <td>Việt Nam</td>
-                                                                <td>23</td>
-                                                                <td>
-                                                                    <div className="widget-26-job-starred">
-                                                                        <button type="button" className="btn btn-outline-danger btn-sm mr-2"
-                                                                            // value={store.id} onClick={this.handleStoreChange}
-                                                                            data-toggle="modal" data-target="#editModal">
-                                                                            <i className="fas fa-edit"></i></button>
-                                                                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
-                                                                            <i className="fas fa-trash-alt"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
+                                                            {all_items}
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -126,10 +110,6 @@ class ProductInfo extends Component {
                 </div>
                 {/*  Add Modal*/}
                 <AddProductModal />
-                {/* Edit Modal */}
-                <EditProductModal />
-                {/*  Delete Modal*/}
-                <DelConfirmModal />
             </div>
         );
     }

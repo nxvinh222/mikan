@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import AddProductForm from './AddProductForm'
+import ProductForm from './ProductForm'
 
 // import '../assets/css/addmodal.css'
 
 export default class AddProductModal extends Component {
+    state = {
+        item: { id: 0, item_name: '', price: 0, description: '', quantity: 0 }
+    }
     render() {
         return (
             <div>
@@ -23,7 +26,7 @@ export default class AddProductModal extends Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <AddProductForm />
+                                <ProductForm item={this.state.item}/>
                             </div>
                             {/* <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

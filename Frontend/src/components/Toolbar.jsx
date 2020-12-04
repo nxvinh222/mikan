@@ -21,7 +21,7 @@ class Toolbar extends Component {
                             </button>
                         </div>
                     </div>
-                    <button type="button" className="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+                    <button type="button" className="btn btn-dark" data-toggle="tooltip" data-placement="right" data-toggle="modal" data-target="#addModal" title="Tooltip on right">
                         <i className="fas fa-plus" />
                     </button>
                 </div>

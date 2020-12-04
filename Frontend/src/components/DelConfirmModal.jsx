@@ -6,7 +6,7 @@ export default class DelConfirmModal extends Component {
     render() {
         return (
             <div>
-                <div id="myModal" className="modal fade">
+                {/* <div id={`DelItemModal${this.props.item.id}`} className="modal fade">
                     <div className="modal-dialog modal-confirm">
                         <div className="modal-content">
                             <div className="modal-header flex-column">
@@ -25,7 +25,7 @@ export default class DelConfirmModal extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         )
     }

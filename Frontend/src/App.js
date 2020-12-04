@@ -6,8 +6,6 @@ import "./App.css";
 import Login from './containers/Login'
 import AdminDashboard from './containers/admin/AdminDashboard';
 import ManagerDashboard from './containers/manager/ManagerDashboard';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import StoreInfo from './components/StoreInfo';
 import ProductPage from './containers/manager/ProductPage';
 import StaffPage from './containers/admin/StaffPage';
@@ -27,7 +25,7 @@ function App() {
             <Route exact path="/admin/staff" render={(props) => {
               return <StaffPage />
             }} />
-            <Route path="/shop/1" render={(props) => {
+            <Route exact path="/shops/1" render={(props) => {
               return <StoreInfo />
             }} />
             <Route exact path="/manager" render={(props) => {
@@ -37,7 +35,7 @@ function App() {
                 </div>
               )
             }} />
-            <Route path="/product/" render={(props) => {
+            <Route exact path="/shops/1/items" render={(props) => {
               return (
                 <div>
                   <ProductPage />

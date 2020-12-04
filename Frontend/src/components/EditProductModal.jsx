@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import AddProductForm from './AddProductForm'
+import ProductForm from './ProductForm'
 
 export default class EditProductModal extends Component {
     render() {
         return (
             <div>
                 {/* Modal */}
-                <div className="modal fade add-modal" id="editModal" tabIndex={-1} role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
+                <div className="modal fade add-modal" id={`EditItemModal${this.props.item.id}`} tabIndex={-1} role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
                     <div className="modal-dialog" role="document" style={{ maxWidth: "40vw" }}>
                         <div className="modal-content">
                             <div className="modal-header" style={{ backgroundColor: "#47c9a2", color: "white" }}>
@@ -17,7 +17,7 @@ export default class EditProductModal extends Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <AddProductForm />
+                                <ProductForm item={this.props.item}/>
                             </div>
                             {/* <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
