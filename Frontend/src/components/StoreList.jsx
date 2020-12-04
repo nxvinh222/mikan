@@ -98,10 +98,10 @@ export default class StoreList extends Component {
 
         return (
             <div className="container">
-                <div class="main-containter">
+                <div className="main-containter">
                     <div className="tool-bar">
                         <div className="filter">
-                            <select class="custom-select">
+                            <select className="custom-select">
                                 <option selected>Khu vực</option>
                                 <option value="1">Hà Nội</option>
                                 <option value="2">Hải Phòng</option>
@@ -112,7 +112,7 @@ export default class StoreList extends Component {
                             <input type="text" className="form-control" placeholder="Tìm kiếm..." aria-label="" aria-describedby="button-addon2" />
                             <div className="input-group-append">
                                 <button className="btn btn-base" type="button" id="button-addon2">
-                                    <i class="fas fa-search"></i>
+                                    <i className="fas fa-search"></i>
                                 </button>
                             </div>
                         </div>
@@ -121,7 +121,7 @@ export default class StoreList extends Component {
                         </button>
                     </div>
                 </div>
-                <div class="main-containter">
+                <div className="main-containter">
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="records">Hiển thị: <b>{(this.state.currentPageNumber - 1) * pageSize + 1}-{pageSize * this.state.currentPageNumber}</b> of <b>{this.state.total}</b> kết quả</div>
@@ -144,7 +144,7 @@ export default class StoreList extends Component {
                                                 </div>
                                                 <div className="col-sm-7">
                                                     <div className="card-block">
-                                                        <div class="row m-b-20">
+                                                        <div className="row m-b-20">
                                                             <div className="col-8">
                                                                 <h4 className="store-title">{store.name}</h4>
                                                             </div>

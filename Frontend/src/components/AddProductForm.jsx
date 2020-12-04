@@ -50,7 +50,7 @@ export default class AddProductFrom extends Component {
                                 <input type="file" id="customFile" />
                                 {/* <img src=""/> */}
                             </div>
-                            <div class="alert alert-success" role="alert">
+                            <div className="alert alert-success" role="alert">
                                 This is a success alert—check it out!
                             </div>
                             <div className="row">
