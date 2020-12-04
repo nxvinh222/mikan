@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :shops
     resources :sessions , only: [:create, :destroy]
     get '/test', to: 'shops#test'
+    get '/shops/:id/items', to: 'shops#getItems'
+    get '/shops/:id/employees', to: 'shops#getEmployees'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
