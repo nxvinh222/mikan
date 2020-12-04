@@ -5,7 +5,7 @@ class V1::ShopsController < ApplicationController
     # Test model association
     # GET /test
     def test
-        @shops = Shop.first.revenue.first.item
+        @shops = Shop.first.item_quantity.first
 
         render json:@shops, status: :ok
     end
