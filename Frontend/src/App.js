@@ -10,7 +10,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StoreInfo from './components/StoreInfo';
 import ProductPage from './containers/manager/ProductPage';
-import Toolbar from './components/Toolbar';
 import StaffPage from './containers/admin/StaffPage';
 
 function App() {
@@ -28,15 +27,13 @@ function App() {
             <Route exact path="/admin/staff" render={(props) => {
               return <StaffPage />
             }} />
-            <Route path="/store/" render={(props) => {
+            <Route path="/shop/1" render={(props) => {
               return <StoreInfo />
             }} />
             <Route exact path="/manager" render={(props) => {
               return (
                 <div>
-                  <Navbar />
                   <ManagerDashboard />
-                  <Footer />
                 </div>
               )
             }} />
@@ -44,15 +41,6 @@ function App() {
               return (
                 <div>
                   <ProductPage />
-                </div>
-              )
-            }} />
-            <Route path="/shop/1" render={(props) => {
-              return (
-                <div>
-                  <Navbar />
-                  <StoreInfo/>
-                  <Footer />
                 </div>
               )
             }} />

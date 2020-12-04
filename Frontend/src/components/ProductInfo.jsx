@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import '../assets/css/table.css'
 import Toolbar from '../components/Toolbar'
 import axios from '../axios.js'
+import AddProductModal from './AddProductModal'
+import DelConfirmModal from './DelConfirmModal'
+import EditProductModal from './EditProductModal'
 
 class ProductInfo extends Component {
 
@@ -11,15 +14,15 @@ class ProductInfo extends Component {
 
     componentDidMount() {
         axios
-        .get(`/v1/shops/1`)
-        .then( data => {
-            console.log(data)
-            // this.setState({
-            //     items: data.data
-            // })
-            console.log(this.state)
-        })
-        .catch( err => console.log(err))
+            .get(`/v1/shops/1`)
+            .then(data => {
+                console.log("hesdfasd")
+                // this.setState({
+                //     items: data.data
+                // })
+                console.log(this.state)
+            })
+            .catch(err => console.log(err))
     }
 
     render() {
@@ -59,13 +62,13 @@ class ProductInfo extends Component {
                                                                 <td>23</td>
                                                                 <td>
                                                                     <div className="widget-26-job-starred">
-                                                                        <a href="#">
-                                                                            <i className="fas fa-edit" />
-                                                                        </a>
-                                                                        <span> | </span>
-                                                                        <a href="#myModal" className="trigger-btn" data-toggle="modal">
-                                                                            <i className="fas fa-trash-alt" />
-                                                                        </a>
+                                                                        <button type="button" className="btn btn-outline-danger btn-sm mr-2"
+                                                                            // value={store.id} onClick={this.handleStoreChange}
+                                                                            data-toggle="modal" data-target="#editModal">
+                                                                            <i className="fas fa-edit"></i></button>
+                                                                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                            <i className="fas fa-trash-alt"></i>
+                                                                        </button>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -80,13 +83,13 @@ class ProductInfo extends Component {
                                                                 <td>23</td>
                                                                 <td>
                                                                     <div className="widget-26-job-starred">
-                                                                        <a href="#">
-                                                                            <i className="fas fa-edit" />
-                                                                        </a>
-                                                                        <span> | </span>
-                                                                        <a href="#myModal" className="trigger-btn" data-toggle="modal">
-                                                                            <i className="fas fa-trash-alt" />
-                                                                        </a>
+                                                                        <button type="button" className="btn btn-outline-danger btn-sm mr-2"
+                                                                            // value={store.id} onClick={this.handleStoreChange}
+                                                                            data-toggle="modal" data-target="#editModal">
+                                                                            <i className="fas fa-edit"></i></button>
+                                                                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                            <i className="fas fa-trash-alt"></i>
+                                                                        </button>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -121,6 +124,12 @@ class ProductInfo extends Component {
                         </div>
                     </div>
                 </div>
+                {/*  Add Modal*/}
+                <AddProductModal />
+                {/* Edit Modal */}
+                <EditProductModal />
+                {/*  Delete Modal*/}
+                <DelConfirmModal />
             </div>
         );
     }

@@ -29,7 +29,7 @@ export default class Navbar extends Component {
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="/admin">
+                                    <a className="nav-link js-scroll-trigger" href={`/${this.props.role}`}>
                                         <i className="fas fa-eye"></i> Tổng quan</a>
                                 </li>
                                 {this.props.role !== 'admin' ? (
@@ -43,7 +43,7 @@ export default class Navbar extends Component {
                                     <a className="nav-link js-scroll-trigger" href="#staff">
                                         <i className="fas fa-user-friends"></i> Nhân viên</a>
                                 ) : (
-                                    <a className="nav-link js-scroll-trigger" href="admin/staff">
+                                    <a className="nav-link js-scroll-trigger" href="/admin/staff">
                                         <i className="fas fa-user-friends"></i> Nhân viên</a>
                                 )}
                                 </li>

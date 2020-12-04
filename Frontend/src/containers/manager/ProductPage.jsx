@@ -7,9 +7,9 @@ class ProductPage extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
-                <ProductInfo/>
-                <Footer/>
+                <Navbar role="manager" />
+                <ProductInfo />
+                <Footer />
             </div>
         );
     }
