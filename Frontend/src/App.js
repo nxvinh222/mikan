@@ -5,11 +5,11 @@ import "./App.css";
 
 import Login from './containers/Login'
 import AdminDashboard from './containers/admin/AdminDashboard';
-import ManagerDashboard from './containers/ManagerDashboard';
+import ManagerDashboard from './containers/manager/ManagerDashboard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StoreInfo from './components/StoreInfo';
-import ProductInfo from './components/ProductInfo';
+import ProductPage from './containers/manager/ProductPage';
 import Toolbar from './components/Toolbar';
 import StaffPage from './containers/admin/StaffPage';
 
@@ -43,13 +43,11 @@ function App() {
             <Route path="/product/" render={(props) => {
               return (
                 <div>
-                  <Navbar />
-                  <ProductInfo />
-                  <Footer />
+                  <ProductPage />
                 </div>
               )
             }} />
-            <Route path="/store/1" render={(props) => {
+            <Route path="/shop/1" render={(props) => {
               return (
                 <div>
                   <Navbar />

@@ -36,7 +36,7 @@ class ProductInfo extends Component {
                                             <div className="result-body">
                                                 <div className="table-responsive">
                                                     <table className="table widget-26">
-                                                        <thead>
+                                                        <thead className="thead-dark">
                                                             <tr>
                                                                 <th scope="col">STT</th>
                                                                 <th scope="col">Ảnh</th>

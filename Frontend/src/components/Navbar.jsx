@@ -34,7 +34,7 @@ export default class Navbar extends Component {
                                 </li>
                                 {this.props.role !== 'admin' ? (
                                     <li className="nav-item">
-                                        <a className="nav-link js-scroll-trigger" href="#store">
+                                        <a className="nav-link js-scroll-trigger" href="/shop/1">
                                             <i className="fas fa-store"></i> Cửa hàng</a>
                                     </li>
                                 ) : null}
