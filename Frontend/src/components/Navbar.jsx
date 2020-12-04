@@ -39,8 +39,13 @@ export default class Navbar extends Component {
                                     </li>
                                 ) : null}
                                 <li className="nav-item">
+                                {this.props.role !== 'admin' ? (
                                     <a className="nav-link js-scroll-trigger" href="#staff">
                                         <i className="fas fa-user-friends"></i> Nhân viên</a>
+                                ) : (
+                                    <a className="nav-link js-scroll-trigger" href="admin/staff">
+                                        <i className="fas fa-user-friends"></i> Nhân viên</a>
+                                )}
                                 </li>
                                 {this.props.role !== 'admin' ? (
                                     <li className="nav-item">
@@ -50,14 +55,10 @@ export default class Navbar extends Component {
                                 ) : null}
                             </ul>
                             {/* Account Button */}
-                            <div className="account dropdown ml-auto">
-                                <button type="button" className="btn btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user-lock"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/"><b>{window.localStorage.getItem('username')}</b></a>
-                                    <a class="dropdown-item" href="/"><i className="fas fa-user"></i> Tài khoản</a>
-                                    <a class="dropdown-item" href="/" onClick={this.signOut}><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                            <div className="account ml-auto text-white">
+                                <div>
+                                    <b className="">{window.localStorage.getItem('username')}</b>
+                                    <a href="/" onClick={this.signOut}><i className="fas fa-sign-out-alt textwhite"></i> Đăng xuất</a>
                                 </div>
                             </div>
                         </div>

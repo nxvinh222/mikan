@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import StoreList from '../components/StoreList'
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
+import StoreList from '../../components/StoreList'
 
 export default class AdminDashboard extends Component {
     componentWillMount() {

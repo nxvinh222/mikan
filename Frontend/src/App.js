@@ -4,13 +4,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import "./App.css";
 
 import Login from './containers/Login'
-import AdminDashboard from './containers/AdminDashboard';
+import AdminDashboard from './containers/admin/AdminDashboard';
 import ManagerDashboard from './containers/ManagerDashboard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StoreInfo from './components/StoreInfo';
 import ProductInfo from './components/ProductInfo';
 import Toolbar from './components/Toolbar';
+import StaffPage from './containers/admin/StaffPage';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             }} />
             <Route exact path="/admin" render={(props) => {
               return <AdminDashboard />
+            }} />
+            <Route exact path="/admin/staff" render={(props) => {
+              return <StaffPage />
             }} />
             <Route path="/store/" render={(props) => {
               return <StoreInfo />
