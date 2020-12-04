@@ -9,6 +9,8 @@ import ManagerDashboard from './containers/ManagerDashboard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StoreInfo from './components/StoreInfo';
+import ProductInfo from './components/ProductInfo';
+import Toolbar from './components/Toolbar';
 
 function App() {
   return (
@@ -30,6 +32,24 @@ function App() {
                 <div>
                   <Navbar />
                   <ManagerDashboard />
+                  <Footer />
+                </div>
+              )
+            }} />
+            <Route path="/product/" render={(props) => {
+              return (
+                <div>
+                  <Navbar />
+                  <ProductInfo />
+                  <Footer />
+                </div>
+              )
+            }} />
+            <Route path="/store/1" render={(props) => {
+              return (
+                <div>
+                  <Navbar />
+                  <StoreInfo/>
                   <Footer />
                 </div>
               )
