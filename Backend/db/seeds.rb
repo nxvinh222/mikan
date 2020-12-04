@@ -23,7 +23,8 @@ Item.create!(
 ItemQuantity.create!(
     shop_id: 1,
     item_id: 1,
-    quantity: 10
+    quantity: 10,
+    sold: 59
 )
 
 Employee.create!(
@@ -32,10 +33,4 @@ Employee.create!(
     phone: "123",
     id_card: "567",
     role: "maid"
-)
-
-Revenue.create!(
-    shop_id: 1,
-    item_id: 1,
-    quantity: 59
 )
