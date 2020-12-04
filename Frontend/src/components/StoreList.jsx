@@ -138,9 +138,7 @@ export default class StoreList extends Component {
                                         <div className="card store-card">
                                             <div className="row">
                                                 <div className="col-5 store-img">
-                                                    <a href="/store/1">
-                                                        <img src={store.imgUrl} alt="Store Image" />
-                                                    </a>
+                                                    <img src={store.imgUrl} alt="Store Image" />
                                                 </div>
                                                 <div className="col-sm-7">
                                                     <div className="card-block">
