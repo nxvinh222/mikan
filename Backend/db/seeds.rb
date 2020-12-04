@@ -20,11 +20,24 @@ Item.create!(
     description: "Strong long sword made by black steel."
 )
 
+Item.create!(
+    item_name: "Wood Bow",
+    price: "1100",
+    description: "A Good bow made."
+)
+
 ItemQuantity.create!(
     shop_id: 1,
     item_id: 1,
     quantity: 10,
     sold: 59
+)
+
+ItemQuantity.create!(
+    shop_id: 1,
+    item_id: 2,
+    quantity: 15,
+    sold: 30
 )
 
 Employee.create!(
@@ -33,4 +46,12 @@ Employee.create!(
     phone: "123",
     id_card: "567",
     role: "maid"
+)
+
+Employee.create!(
+    shop_id: 1,
+    name: "Tuan",
+    phone: "456",
+    id_card: "789",
+    role: "cash"
 )
