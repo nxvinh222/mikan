@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../assets/css/storedetail.css';
 
+import storeData from '../data/storeList'
+
 class StoreInfo extends Component {
     constructor(props) {
         super(props)

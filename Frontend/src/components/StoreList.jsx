@@ -4,6 +4,8 @@ import '../assets/css/store.css'
 import DelConfirmModal from './DelConfirmModal'
 import storeData from '../data/storeList'
 import Toolbar from './Toolbar';
+import NewStoreModal from './NewStoreModal';
+import EditStoreModal from './EditStoreModal';
 
 const pageSize = 2;
 
@@ -15,7 +17,8 @@ export default class StoreList extends Component {
             total: 0,
             results: [],
             currentPageNumber: 1,
-            maxPageNumber: 1
+            maxPageNumber: 1,
+            currentStore: ''
         }
         this.getData(1);
     }
@@ -53,6 +56,16 @@ export default class StoreList extends Component {
         }
     }
 
+
+    handleStoreChange = (event) => {
+        let target = event.target;
+        let value = target.value;
+
+        this.setState({
+            currentStore: value
+        });
+    }
+
     handlePageChange = (pageNumber) => {
         this.getData(pageNumber);
         this.setState({
@@ -85,7 +98,29 @@ export default class StoreList extends Component {
 
         return (
             <div className="container">
-                <Toolbar/>
+                <div class="main-containter">
+                    <div className="tool-bar">
+                        <div className="filter">
+                            <select class="custom-select">
+                                <option selected>Khu vực</option>
+                                <option value="1">Hà Nội</option>
+                                <option value="2">Hải Phòng</option>
+                                <option value="3">Hồ Chí Minh</option>
+                            </select>
+                        </div>
+                        <div className="input-group search-input">
+                            <input type="text" className="form-control" placeholder="Tìm kiếm..." aria-label="" aria-describedby="button-addon2" />
+                            <div className="input-group-append">
+                                <button className="btn btn-base" type="button" id="button-addon2">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" className="btn btn-dark" data-toggle="modal" data-target="#newModal">
+                            <i className="fas fa-plus" />
+                        </button>
+                    </div>
+                </div>
                 <div class="main-containter">
                     <div className="row">
                         <div className="col-lg-12">
@@ -115,10 +150,10 @@ export default class StoreList extends Component {
                                                             </div>
                                                             <div className="col-4">
                                                                 <div className="store-btn">
-                                                                    <a href={`/store/${store.id}`}>
-                                                                        <button type="button" className="btn btn-outline-success btn-sm"><i className="fas fa-eye"></i></button>
-                                                                    </a>
-                                                                    <button type="button" className="btn btn-outline-danger btn-sm "><i className="fas fa-edit"></i></button>
+                                                                    <button type="button" className="btn btn-outline-danger btn-sm "
+                                                                        value={store.id} onClick={this.handleStoreChange}
+                                                                        data-toggle="modal" data-target="#editModal">
+                                                                        <i className="fas fa-edit"></i></button>
                                                                     <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
                                                                         <i className="fas fa-trash-alt"></i>
                                                                     </button>
@@ -195,6 +230,8 @@ export default class StoreList extends Component {
 
                 {/* Modal */}
                 <DelConfirmModal />
+                <NewStoreModal />
+                {this.state.currentStore? (<EditStoreModal storeID={this.state.currentStore} />): null}
             </div>
         )
     }
