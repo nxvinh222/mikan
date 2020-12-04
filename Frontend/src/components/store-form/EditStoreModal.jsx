@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import storeData from '../data/storeList'
+import storeData from '../../data/storeList'
 
 export default class EditStoreModal extends Component {
     constructor(props) {

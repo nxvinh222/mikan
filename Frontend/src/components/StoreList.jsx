@@ -4,8 +4,8 @@ import '../assets/css/store.css'
 import DelConfirmModal from './DelConfirmModal'
 import storeData from '../data/storeList'
 import Toolbar from './Toolbar';
-import NewStoreModal from './NewStoreModal';
-import EditStoreModal from './EditStoreModal';
+import NewStoreModal from './store-form/NewStoreModal';
+import EditStoreModal from './store-form/EditStoreModal';
 
 const pageSize = 2;
 

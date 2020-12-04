@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import DelConfirmModal from '../DelConfirmModal'
+import EditStaffModal from './EditStaffModal'
+import NewStaffModal from './NewStaffModal'
 
 export default class AdminStaffTable extends Component {
     render() {
@@ -33,14 +36,14 @@ export default class AdminStaffTable extends Component {
                                                         <td>Avenger</td>
                                                         <td>0918345112</td>
                                                         <td>
-                                                            <div className="widget-26-job-starred">
-                                                                <a href="#">
-                                                                    <i className="fas fa-edit" />
-                                                                </a>
-                                                                <span> | </span>
-                                                                <a href="#myModal" className="trigger-btn" data-toggle="modal">
-                                                                    <i className="fas fa-trash-alt" />
-                                                                </a>
+                                                            <div className="widget-26-job-starred text-right">
+                                                                <button type="button" className="btn btn-outline-danger btn-sm mr-2"
+                                                                    // value={store.id} onClick={this.handleStoreChange}
+                                                                    data-toggle="modal" data-target="#editModal">
+                                                                    <i className="fas fa-edit"></i></button>
+                                                                <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                    <i className="fas fa-trash-alt"></i>
+                                                                </button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -53,6 +56,11 @@ export default class AdminStaffTable extends Component {
                         </div>
                     </div>
                 </div>
+
+                {/* Modal */}
+                <DelConfirmModal />
+                <NewStaffModal />
+                <EditStaffModal />
             </div>
         )
     }
