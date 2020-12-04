@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import axios from '../axios.js'
-import '../assets/css/addform.css'
+import axios from '../../axios.js'
+import '../../assets/css/addform.css'
 
 export default class ProductFrom extends Component {
 

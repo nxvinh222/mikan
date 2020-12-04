@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import '../assets/css/table.css'
-import Toolbar from '../components/Toolbar'
+import Toolbar from './Toolbar'
 import axios from '../axios.js'
-import AddProductModal from './AddProductModal'
+import AddProductModal from './product-form/AddProductModal'
 import DelConfirmModal from './DelConfirmModal'
-import EditProductModal from './EditProductModal'
+import EditProductModal from './product-form/EditProductModal'
 
-class ProductInfo extends Component {
+class ProductTable extends Component {
 
     state = {
         items: []
@@ -115,4 +115,4 @@ class ProductInfo extends Component {
     }
 }
 
-export default ProductInfo;
+export default ProductTable;
