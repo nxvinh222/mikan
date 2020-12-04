@@ -22,7 +22,7 @@ function App() {
             <Route exact path="/admin" render={(props) => {
               return <AdminDashboard />
             }} />
-            <Route path="/admin/store/" render={(props) => {
+            <Route path="/store/" render={(props) => {
               return <StoreInfo />
             }} />
             <Route exact path="/manager" render={(props) => {

@@ -85,10 +85,6 @@
     margin-bottom: 10px
 }
 
-.m-t-30 {
-    margin-top: 10px
-}
-
 .user-card-full .social-link li {
     display: inline-block
 }
@@ -109,11 +105,6 @@
 
 .store-btn button {
     margin-left: 5px!important;
-}
-
-.store-title, .store-btn {
-    line-height: 3rem;
-    vertical-align: middle;
 }
 
 .store-btn {

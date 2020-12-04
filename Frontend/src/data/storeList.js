@@ -1,5 +1,6 @@
 const storeData = [
     {
+        id: "1",
         name: "Cửa hàng CIRCLE K Long Biên",
         address: "152 - 154 Phó Đức Chính, Phường Trúc Bạch , Quận Ba Đình, Hà Nội",
         hotline: "+84 24 3200 6087",
@@ -10,6 +11,7 @@ const storeData = [
         }
     },
     {
+        id: "2",
         name: "Cửa hàng CIRCLE K Long Biên",
         address: "152 - 154 Phó Đức Chính, Phường Trúc Bạch , Quận Ba Đình, Hà Nội",
         hotline: "+84 24 3200 6087",
@@ -20,6 +22,7 @@ const storeData = [
         }
     },
     {
+        id: "3",
         name: "Cửa hàng CIRCLE K Long Biên",
         address: "152 - 154 Phó Đức Chính, Phường Trúc Bạch , Quận Ba Đình, Hà Nội",
         hotline: "+84 24 3200 6087",
@@ -30,6 +33,7 @@ const storeData = [
         }
     },
     {
+        id: "4",
         name: "Cửa hàng CIRCLE K Long Biên",
         address: "152 - 154 Phó Đức Chính, Phường Trúc Bạch , Quận Ba Đình, Hà Nội",
         hotline: "+84 24 3200 6087",

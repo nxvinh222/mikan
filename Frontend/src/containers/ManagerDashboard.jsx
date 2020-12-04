@@ -10,27 +10,30 @@ export default class ManagerDashboard extends Component {
         return (
             <div className="container list-view">
                 {/* Toolbar*/}
-                <div className="tool-bar">
-                    <div className="filter">
-                        <select class="custom-select">
-                            <option selected>Chức vụ</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div className="input-group search-input">
-                        <input type="text" className="form-control" placeholder="Tìm kiếm..." aria-label="" aria-describedby="button-addon2" />
-                        <div className="input-group-append">
-                            <button className="btn btn-base" type="button" id="button-addon2">
-                            <i class="fas fa-search"></i>
-                            </button>
+                <div class="main-containter">
+                    <div className="tool-bar">
+                        <div className="filter">
+                            <select class="custom-select">
+                                <option selected>Chức vụ</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
                         </div>
+                        <div className="input-group search-input">
+                            <input type="text" className="form-control" placeholder="Tìm kiếm..." aria-label="" aria-describedby="button-addon2" />
+                            <div className="input-group-append">
+                                <button className="btn btn-base" type="button" id="button-addon2">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" className="btn btn-dark" data-toggle="modal" data-target="#addModal">
+                            <i className="fas fa-plus" />
+                        </button>
                     </div>
-                    <button type="submit" className="btn btn-dark" data-toggle="modal" data-target="#addModal">
-                        <i className="fas fa-plus" />
-                    </button>
                 </div>
+                
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-employee card-margin">
@@ -117,7 +120,7 @@ export default class ManagerDashboard extends Component {
                                                                         <a href="#myModal" className="trigger-btn" data-toggle="modal">
                                                                             <i className="fas fa-trash-alt" />
                                                                         </a>
-                                                                        
+
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -503,13 +506,13 @@ export default class ManagerDashboard extends Component {
                         </div>
                     </div>
                 </div>
-                
+
                 {/*  Add Modal*/}
-                <AddProductModal/>
+                <AddProductModal />
                 {/* Edit Modal */}
-                <EditProductModal/>
+                <EditProductModal />
                 {/*  Delete Modal*/}
-                <DelConfirmModal/>
+                <DelConfirmModal />
             </div>
         )
     }
