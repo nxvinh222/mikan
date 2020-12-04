@@ -49,7 +49,7 @@ export default class StoreList extends Component {
             console.log(this.state);
 
         } catch (err) {
-            console.log(err.message);
+            alert(err.message);
         }
     }
 
@@ -109,13 +109,15 @@ export default class StoreList extends Component {
                                                 </div>
                                                 <div className="col-sm-7">
                                                     <div className="card-block">
-                                                        <div class="row m-b-20 m-t-30">
+                                                        <div class="row m-b-20">
                                                             <div className="col-8">
                                                                 <h4 className="store-title">{store.name}</h4>
                                                             </div>
                                                             <div className="col-4">
                                                                 <div className="store-btn">
-                                                                    <button type="button" className="btn btn-outline-success btn-sm"><i className="fas fa-eye"></i></button>
+                                                                    <a href={`/store/${store.id}`}>
+                                                                        <button type="button" className="btn btn-outline-success btn-sm"><i className="fas fa-eye"></i></button>
+                                                                    </a>
                                                                     <button type="button" className="btn btn-outline-danger btn-sm "><i className="fas fa-edit"></i></button>
                                                                     <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
                                                                         <i className="fas fa-trash-alt"></i>

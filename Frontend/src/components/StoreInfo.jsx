@@ -2,6 +2,29 @@ import React, { Component } from 'react';
 import '../assets/css/storedetail.css';
 
 class StoreInfo extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            storeID: window.location.pathname.split('/').pop(),
+            store: {},
+        }
+        this.getData(this.state.storeID);
+    }
+
+    getData = async (id) => {
+        try {
+            const data = await storeData[parseInt(this.state.storeID) - 1];
+            // console.log(data);
+
+            this.setState({
+                store: data
+            });
+        } catch (err) {
+            alert(err.message);
+        }
+    }
+
     render() {
         return (
             <div className="col-sm-12 col-md-12 col-lg-12">
