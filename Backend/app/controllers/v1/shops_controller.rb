@@ -9,6 +9,7 @@ class V1::ShopsController < ApplicationController
 
         render json:@shops, status: :ok
     end
+    #############################################
     
     #GET /shops
     def index
