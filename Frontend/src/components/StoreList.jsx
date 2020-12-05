@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import axios from '../axios.js'
 
 import '../assets/css/store.css'
-import DelConfirmModal from './DelConfirmModal'
 import storeImg from '../data/storeImg'
 import Toolbar from './Toolbar';
 import NewStoreModal from './store-form/NewStoreModal';
 import EditStoreModal from './store-form/EditStoreModal';
+import DelStoreModal from './store-form/DelStoreModal';
 
 const pageSize = 3;
 
@@ -20,7 +20,6 @@ export default class StoreList extends Component {
             results: [],
             currentPageNumber: 1,
             maxPageNumber: 1,
-            currentStore: ''
         }
         this.getData(1);
     }
@@ -35,23 +34,14 @@ export default class StoreList extends Component {
                 this.setState({
                     total: data.data.length,
                     storeList: data.data,
-                    results: from == to ? data.data : data.data.slice(from-1, to),
+                    results: from == to ? data.data : data.data.slice(from - 1, to),
                     maxPageNumber: Math.ceil(data.data.length / pageSize)
                 });
-                console.log(from + "    " + to);
+                // console.log(from + "    " + to);
                 console.log(this.state.results);
                 // console.log(storeImg);
             })
             .catch(err => alert(err.message))
-    }
-
-    handleStoreChange = (event) => {
-        let target = event.target;
-        let value = target.value;
-
-        this.setState({
-            currentStore: value
-        });
     }
 
     handlePageChange = (pageNumber) => {
@@ -87,6 +77,7 @@ export default class StoreList extends Component {
         return (
             <div className="container">
                 <div className="main-containter">
+                    {/* Toolbar */}
                     <div className="tool-bar">
                         <div className="filter">
                             <select className="custom-select">
@@ -138,11 +129,14 @@ export default class StoreList extends Component {
                                                                 <div className="store-btn">
                                                                     <button type="button" className="btn btn-outline-danger btn-sm "
                                                                         value={store.id} onClick={this.handleStoreChange}
-                                                                        data-toggle="modal" data-target="#editModal">
+                                                                        data-toggle="modal" data-target={`#editModal${store.id}`}>
                                                                         <i className="fas fa-edit"></i></button>
-                                                                    <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                    <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${store.id}`}>
                                                                         <i className="fas fa-trash-alt"></i>
                                                                     </button>
+
+                                                                    <EditStoreModal store={store}/>
+                                                                    <DelStoreModal storeID={store.id} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -173,7 +167,6 @@ export default class StoreList extends Component {
                                             </div>
                                         </div>
                                         {/* End Store Card */}
-                                        {}
                                         <hr />
                                     </div>
                                 );
@@ -215,9 +208,7 @@ export default class StoreList extends Component {
                 {/* End Pagination */}
 
                 {/* Modal */}
-                <DelConfirmModal />
                 <NewStoreModal />
-                {this.state.currentStore ? (<EditStoreModal storeID={this.state.currentStore} />) : null}
             </div>
         )
     }

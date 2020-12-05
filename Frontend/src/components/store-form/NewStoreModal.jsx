@@ -37,7 +37,8 @@ export default class NewStoreModal extends Component {
             .then(data => {
                 // console.log('The form was submitted with the following data:');
                 // console.log(data.data);
-                alert("Tạo cửa hàng thành công");        
+                alert("Tạo cửa hàng thành công");
+                window.location.reload();        
             })
             .catch(err => alert(err.message))
     }
