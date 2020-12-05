@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import axios from '../axios.js'
 
 import '../assets/css/store.css'
 import DelConfirmModal from './DelConfirmModal'
-import storeData from '../data/storeList'
+import storeImg from '../data/storeImg'
 import Toolbar from './Toolbar';
 import NewStoreModal from './store-form/NewStoreModal';
 import EditStoreModal from './store-form/EditStoreModal';
 
-const pageSize = 2;
+const pageSize = 3;
 
 export default class StoreList extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ export default class StoreList extends Component {
 
         this.state = {
             total: 0,
+            storeList: [],
             results: [],
             currentPageNumber: 1,
             maxPageNumber: 1,
@@ -23,39 +25,25 @@ export default class StoreList extends Component {
         this.getData(1);
     }
 
-    getData = async (pageNumber) => {
-        try {
-            // const data = await fetch(`https://guarded-inlet-73441.herokuapp.com/posts/get/posts?pageNumber=${pageNumber}&pageSize=${pageSize}`,
-            //     {
-            //         method: 'GET',
-            //         headers: {
-            //             'Content-Type': 'application/json'
-            //         },
-            //         credentials: 'include'
-            //     }
-            // ).then((res) => { return res.json(); });
-
-            // TODO: day la lay du lieu gia (pseudo data)
-            const data = await storeData;
-            console.log(data);
-
-            // this.setState({
-            //     total: data.data.total,
-            //     results: data.data.results,
-            //     maxPageNumber: Math.ceil(data.data.total / pageSize)
-
-            this.setState({
-                total: data.length,
-                results: data,
-                maxPageNumber: Math.ceil(data.length / pageSize)
-            });
-            console.log(this.state);
-
-        } catch (err) {
-            alert(err.message);
-        }
+    getData = (pageNumber) => {
+        axios
+            .get(`/v1/shops/`)
+            .then(data => {
+                // console.log(data.data);
+                const from = (this.state.currentPageNumber - 1) * pageSize + 1
+                const to = pageSize * this.state.currentPageNumber
+                this.setState({
+                    total: data.data.length,
+                    storeList: data.data,
+                    results: from == to ? data.data : data.data.slice(from-1, to),
+                    maxPageNumber: Math.ceil(data.data.length / pageSize)
+                });
+                console.log(from + "    " + to);
+                console.log(this.state.results);
+                // console.log(storeImg);
+            })
+            .catch(err => alert(err.message))
     }
-
 
     handleStoreChange = (event) => {
         let target = event.target;
@@ -124,7 +112,7 @@ export default class StoreList extends Component {
                 <div className="main-containter">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="records">Hiển thị: <b>{(this.state.currentPageNumber - 1) * pageSize + 1}-{pageSize * this.state.currentPageNumber}</b> of <b>{this.state.total}</b> kết quả</div>
+                            <div className="records">Hiển thị: <b>{(this.state.currentPageNumber - 1) * pageSize + 1} {this.state.total >= pageSize ? (`- ${pageSize * this.state.currentPageNumber}`) : ''}</b> trên <b>{this.state.total}</b> kết quả</div>
                         </div>
                     </div>
 
@@ -138,13 +126,13 @@ export default class StoreList extends Component {
                                         <div className="card store-card">
                                             <div className="row">
                                                 <div className="col-5 store-img">
-                                                    <img src={store.imgUrl} alt="Store Image" />
+                                                    <img src={storeImg[store.id]} alt="Store Image" />
                                                 </div>
                                                 <div className="col-sm-7">
                                                     <div className="card-block">
                                                         <div className="row m-b-20">
                                                             <div className="col-8">
-                                                                <h4 className="store-title">{store.name}</h4>
+                                                                <h4 className="store-title">{store.shop_name}</h4>
                                                             </div>
                                                             <div className="col-4">
                                                                 <div className="store-btn">
@@ -162,7 +150,7 @@ export default class StoreList extends Component {
                                                         <div className="row">
                                                             <div className="col-sm-6">
                                                                 <p className="m-b-10 f-w-600">Địa chỉ</p>
-                                                                <h6 className="text-muted f-w-400">{store.address}</h6>
+                                                                <h6 className="text-muted f-w-400">{store.shop_address}</h6>
                                                             </div>
                                                             <div className="col-sm-6">
                                                                 <p className="m-b-10 f-w-600">Hotline</p>
@@ -173,11 +161,11 @@ export default class StoreList extends Component {
                                                         <div className="row">
                                                             <div className="col-sm-6">
                                                                 <p className="m-b-10 f-w-600">Tên</p>
-                                                                <h6 className="text-muted f-w-400">{store.manager.name}</h6>
+                                                                <h6 className="text-muted f-w-400">{store.manager_name}</h6>
                                                             </div>
                                                             <div className="col-sm-6">
                                                                 <p className="m-b-10 f-w-600">Số điện thoại</p>
-                                                                <h6 className="text-muted f-w-400">{store.manager.phone}</h6>
+                                                                <h6 className="text-muted f-w-400">{store.manager_phone}</h6>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -229,7 +217,7 @@ export default class StoreList extends Component {
                 {/* Modal */}
                 <DelConfirmModal />
                 <NewStoreModal />
-                {this.state.currentStore? (<EditStoreModal storeID={this.state.currentStore} />): null}
+                {this.state.currentStore ? (<EditStoreModal storeID={this.state.currentStore} />) : null}
             </div>
         )
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from '../../axios'
 
 export default class NewStoreModal extends Component {
     state = {
@@ -25,6 +26,20 @@ export default class NewStoreModal extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
+        axios
+            .post('/v1/shops', {
+                shop_name: this.state.storeName,
+                shop_address: this.state.address,
+                manager_name: this.state.managerName,
+                manager_phone: this.state.managerPhone,
+                hotline: this.state.hotline
+            })
+            .then(data => {
+                // console.log('The form was submitted with the following data:');
+                // console.log(data.data);
+                alert("Tạo cửa hàng thành công");        
+            })
+            .catch(err => alert(err.message))
     }
 
     render() {
@@ -46,21 +61,21 @@ export default class NewStoreModal extends Component {
                                         <label htmlFor="store-name" className="col-sm-4 col-form-label">Tên cửa hàng</label>
                                         <div className="col-sm-8">
                                             <input className="form-control" id="store-name" name="storeName"
-                                            value={this.state.storeName} onChange={this.handleChange} />
+                                                value={this.state.storeName} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="address" className="col-sm-4 col-form-label">Địa chỉ</label>
                                         <div className="col-sm-8">
                                             <input className="form-control" id="address" name="address"
-                                            value={this.state.address} onChange={this.handleChange} />
+                                                value={this.state.address} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="hotline" className="col-sm-4 col-form-label">Hotline</label>
                                         <div className="col-sm-8">
                                             <input className="form-control" id="hotline" name="hotline"
-                                            value={this.state.hotline} onChange={this.handleChange} />
+                                                value={this.state.hotline} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
@@ -74,31 +89,35 @@ export default class NewStoreModal extends Component {
                                         <label htmlFor="manager" className="col-sm-4 col-form-label">Tên quản lý</label>
                                         <div className="col-sm-8">
                                             <input className="form-control" id="manager" name="managerName"
-                                            value={this.state.managerName} onChange={this.handleChange} />
+                                                value={this.state.managerName} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="manager-phone" className="col-sm-4 col-form-label">Số điện thoại</label>
                                         <div className="col-sm-8">
                                             <input className="form-control" id="manager-phone" name="managerPhone"
-                                            value={this.state.managerPhone} onChange={this.handleChange} />
+                                                value={this.state.managerPhone} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="account" className="col-sm-4 col-form-label">Tài khoản</label>
                                         <div className="col-sm-8">
                                             <input className="form-control" id="account" name="managerAccount"
-                                            value={this.state.managerAccount} onChange={this.handleChange} />
+                                                value={this.state.managerAccount} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="password" className="col-sm-4 col-form-label">Mật khẩu</label>
                                         <div className="col-sm-8">
                                             <input type="password" className="form-control" id="password" name="managerPass"
-                                            value={this.state.managerPass} onChange={this.handleChange} />
+                                                value={this.state.managerPass} onChange={this.handleChange} />
                                         </div>
                                     </div>
-                                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit} data-dismiss="modal">Submit</button>
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <button type="submit" className="btn btn-success add-button" onClick={this.handleSubmit} data-dismiss="modal">Lưu</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             {/* <div className="modal-footer">
