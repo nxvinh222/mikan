@@ -45,7 +45,8 @@ Employee.create!(
     name: "Nam",
     phone: "123",
     id_card: "567",
-    role: "maid"
+    role: "maid",
+    shop_name: "Peak Sword"
 )
 
 Employee.create!(
@@ -53,5 +54,6 @@ Employee.create!(
     name: "Tuan",
     phone: "456",
     id_card: "789",
-    role: "cash"
+    role: "cash",
+    shop_name: "Peak Sword"
 )
