@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # devise_for :users
   namespace :v1 do
     resources :shops
+    resources :employees
     resources :sessions , only: [:create, :destroy]
     get '/test', to: 'shops#test'
     get '/shops/:id/items', to: 'shops#getItems'
