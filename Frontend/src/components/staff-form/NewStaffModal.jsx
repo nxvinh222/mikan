@@ -1,12 +1,35 @@
 import React, { Component } from 'react'
+import axios from '../../axios'
 
 export default class NewStaffModal extends Component {
-    state = {
-        storeName: '',
-        name: '',
-        phone: '',
-        cardID: '',
-        role: ''
+    constructor(props) {
+        super(props)
+        this.state = {
+            storeNameList: [],
+            storeID: '',
+            name: '',
+            phone: '',
+            cardID: '',
+            role: ''
+        }
+        this.getData();
+    }
+
+    getData = () => {
+        axios
+            .get(`/v1/shops/`)
+            .then(data => {
+                var storeNameList = data.data.map((store) => {
+                    return { id: store.id, name: store.shop_name }
+                })
+                // console.log(storeNameList);
+                this.setState({
+                    storeNameList: storeNameList,
+                    storeID: storeNameList[0].id
+                });
+                // console.log(this.state);
+            })
+            .catch(err => alert(err.message))
     }
 
     handleChange = (event) => {
@@ -22,6 +45,21 @@ export default class NewStaffModal extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
+        axios
+            .post('/v1/employees', {
+                shop_id: this.state.storeID,
+                name: this.state.name,
+                id_card: this.state.cardID,
+                phone: this.state.phone,
+                role: this.state.role
+            })
+            .then(data => {
+                console.log('The form was submitted with the following data:');
+                console.log(data.data);
+                alert("Thêm nhân viên thành công");
+                window.location.reload();        
+            })
+            .catch(err => alert(err.message))
     }
 
     render() {
@@ -40,41 +78,50 @@ export default class NewStaffModal extends Component {
                             <div className="modal-body">
                                 <form className="container">
                                     <div className="form-group row">
-                                        <label htmlFor="store-name" class="col-sm-4 col-form-label">Tên cửa hàng</label>
+                                        <label htmlFor="store-name" class="col-sm-4 col-form-label">Cửa hàng</label>
                                         <div class="col-sm-8">
-                                            <input className="form-control" id="store-name" name="storeName"
-                                            value={this.state.storeName} onChange={this.handleChange} />
+                                            <select className="form-control" id="store-name" name="storeID" onChange={this.handleChange}>
+                                                {this.state.storeNameList.map((store) => {
+                                                    return (
+                                                        <option value={store.id}>{store.name}</option>
+                                                    )
+                                                })}
+                                            </select>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="name" class="col-sm-4 col-form-label">Tên nhân viên</label>
                                         <div class="col-sm-8">
                                             <input className="form-control" id="name" name="name"
-                                            value={this.state.name} onChange={this.handleChange} />
+                                                value={this.state.name} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="role" class="col-sm-4 col-form-label">Vị trí</label>
                                         <div class="col-sm-8">
                                             <input className="form-control" id="role" name="role"
-                                            value={this.state.role} onChange={this.handleChange} />
+                                                value={this.state.role} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="card" class="col-sm-4 col-form-label">Card ID</label>
                                         <div class="col-sm-8">
                                             <input className="form-control" id="card" name="cardID"
-                                            value={this.state.cardID} onChange={this.handleChange} />
+                                                value={this.state.cardID} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="phone" class="col-sm-4 col-form-label">Số điện thoại</label>
                                         <div class="col-sm-8">
                                             <input className="form-control" id="phone" name="phone"
-                                            value={this.state.phone} onChange={this.handleChange} />
+                                                value={this.state.phone} onChange={this.handleChange} />
                                         </div>
                                     </div>
-                                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit} data-dismiss="modal">Submit</button>
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <button type="submit" className="btn btn-success add-button" onClick={this.handleSubmit} data-dismiss="modal">Lưu</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             {/* <div className="modal-footer">

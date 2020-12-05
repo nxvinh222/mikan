@@ -6,7 +6,7 @@ import storeImg from '../data/storeImg'
 import Toolbar from './Toolbar';
 import NewStoreModal from './store-form/NewStoreModal';
 import EditStoreModal from './store-form/EditStoreModal';
-import DelStoreModal from './store-form/DelStoreModal';
+import DelConfirmModel from './DelConfirmModal';
 
 const pageSize = 3;
 
@@ -42,6 +42,19 @@ export default class StoreList extends Component {
                 // console.log(storeImg);
             })
             .catch(err => alert(err.message))
+    }
+
+    
+    handleDelete = (storeID) => {
+        // console.log(this.props.storeID);
+        axios
+        .delete(`/v1/shops/${storeID}`)
+        .then(data => {
+            console.log(data.data);
+            alert("Xóa cửa hàng thành công");  
+            window.location.reload();
+        })
+        .catch(err => alert(err.message))
     }
 
     handlePageChange = (pageNumber) => {
@@ -128,7 +141,6 @@ export default class StoreList extends Component {
                                                             <div className="col-4">
                                                                 <div className="store-btn">
                                                                     <button type="button" className="btn btn-outline-danger btn-sm "
-                                                                        value={store.id} onClick={this.handleStoreChange}
                                                                         data-toggle="modal" data-target={`#editModal${store.id}`}>
                                                                         <i className="fas fa-edit"></i></button>
                                                                     <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${store.id}`}>
@@ -136,7 +148,7 @@ export default class StoreList extends Component {
                                                                     </button>
 
                                                                     <EditStoreModal store={store}/>
-                                                                    <DelStoreModal storeID={store.id} />
+                                                                    <DelConfirmModel objectID={store.id} deleteMethod={this.handleDelete} />
                                                                 </div>
                                                             </div>
                                                         </div>
