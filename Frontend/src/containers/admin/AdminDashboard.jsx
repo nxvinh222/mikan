@@ -21,8 +21,10 @@ export default class AdminDashboard extends Component {
     render() {
         return (
             <div>
-                <Navbar role="admin"/>
-                <StoreList />
+                <Navbar role="admin" />
+                <div className="container mt-3">
+                    <StoreList />
+                </div>
                 <Footer />
             </div>
         )

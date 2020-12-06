@@ -4,16 +4,13 @@ import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import StaffTable from '../../components/StaffTable'
 
-import "../../assets/css/table.css";
-
-const pageSize = 3;
-
 export default class StaffPage extends Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
+            storeID: window.location.pathname.split('/').pop(),
             total: 0,
             staffList: [],
             results: [],
@@ -25,7 +22,7 @@ export default class StaffPage extends Component {
 
     getData = (pageNumber) => {
         axios
-            .get(`/v1/employees/`)
+            .get(`/v1/shops/${this.state.storeID}/employees`)
             .then(data => {
                 // console.log(data.data);
                 // const from = (this.state.currentPageNumber - 1) * pageSize + 1
@@ -35,7 +32,7 @@ export default class StaffPage extends Component {
                     // staffList: data.data,
                     // results: from == to ? data.data : data.data.slice(from - 1, to),
                     results: data.data,
-                    maxPageNumber: Math.ceil(data.data.length / pageSize)
+                    // maxPageNumber: Math.ceil(data.data.length / pageSize)
                 });
                 // console.log(from + "    " + to);
                 console.log(this.state.results);
@@ -47,9 +44,10 @@ export default class StaffPage extends Component {
         return (
             <div>
                 <Navbar role="admin" />
-                <div className="container mt-3" style={{height: "82vh"}}>
-                    <StaffTable staffList={this.state.results} role="admin"/>
+                <div className="container mt-3" style={{ height: "82vh" }}>
+                    <StaffTable staffList={this.state.results} role="manager" defaultStoreID={this.state.storeID}/>
                 </div>
+                {/* TODO: Co the phat trien them */}
                 <Footer />
             </div>
         )

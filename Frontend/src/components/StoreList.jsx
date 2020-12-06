@@ -44,17 +44,17 @@ export default class StoreList extends Component {
             .catch(err => alert(err.message))
     }
 
-    
+
     handleDelete = (storeID) => {
         // console.log(this.props.storeID);
         axios
-        .delete(`/v1/shops/${storeID}`)
-        .then(data => {
-            console.log(data.data);
-            alert("Xóa cửa hàng thành công");  
-            window.location.reload();
-        })
-        .catch(err => alert(err.message))
+            .delete(`/v1/shops/${storeID}`)
+            .then(data => {
+                console.log(data.data);
+                alert("Xóa cửa hàng thành công");
+                window.location.reload();
+            })
+            .catch(err => alert(err.message))
     }
 
     handlePageChange = (pageNumber) => {
@@ -90,34 +90,11 @@ export default class StoreList extends Component {
         return (
             <div className="container">
                 <div className="main-containter">
-                    {/* Toolbar */}
-                    <div className="tool-bar">
-                        <div className="filter">
-                            <select className="custom-select">
-                                <option selected>Khu vực</option>
-                                <option value="1">Hà Nội</option>
-                                <option value="2">Hải Phòng</option>
-                                <option value="3">Hồ Chí Minh</option>
-                            </select>
-                        </div>
-                        <div className="input-group search-input">
-                            <input type="text" className="form-control" placeholder="Tìm kiếm..." aria-label="" aria-describedby="button-addon2" />
-                            <div className="input-group-append">
-                                <button className="btn btn-base" type="button" id="button-addon2">
-                                    <i className="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <div className="records">Hiển thị: <b>{(this.state.currentPageNumber - 1) * pageSize + 1} {this.state.total >= pageSize ? (`- ${pageSize * this.state.currentPageNumber}`) : ''}</b> trên <b>{this.state.total}</b> kết quả</div>
                         <button type="button" className="btn btn-dark" data-toggle="modal" data-target="#newModal">
-                            <i className="fas fa-plus" />
+                            <i className="fas fa-plus mr-2" />Thêm cửa hàng
                         </button>
-                    </div>
-                </div>
-                <div className="main-containter">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="records">Hiển thị: <b>{(this.state.currentPageNumber - 1) * pageSize + 1} {this.state.total >= pageSize ? (`- ${pageSize * this.state.currentPageNumber}`) : ''}</b> trên <b>{this.state.total}</b> kết quả</div>
-                        </div>
                     </div>
 
                     {/* Store List */}
@@ -130,7 +107,9 @@ export default class StoreList extends Component {
                                         <div className="card store-card">
                                             <div className="row">
                                                 <div className="col-5 store-img">
-                                                    <img src={storeImg[store.id]} alt="Store Image" />
+                                                    <a href={`/admin/store/${store.id}`} target="_blank">
+                                                        <img src={storeImg[store.id]} alt="Store Image" />
+                                                    </a>
                                                 </div>
                                                 <div className="col-sm-7">
                                                     <div className="card-block">
@@ -147,7 +126,7 @@ export default class StoreList extends Component {
                                                                         <i className="fas fa-trash-alt"></i>
                                                                     </button>
 
-                                                                    <EditStoreModal store={store}/>
+                                                                    <EditStoreModal store={store} />
                                                                     <DelConfirmModel objectID={store.id} deleteMethod={this.handleDelete} />
                                                                 </div>
                                                             </div>
