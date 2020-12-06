@@ -1,44 +1,13 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
+import axios from '../axios'
 
-import DelConfirmModal from '../DelConfirmModal'
-import EditStaffModal from './EditStaffModal'
-import NewStaffModal from './NewStaffModal'
+import DelConfirmModal from './DelConfirmModal'
+import EditStaffModal from './staff-form/EditStaffModal'
+import NewStaffModal from './staff-form/NewStaffModal'
 
-const pageSize = 3;
-
-export default class AdminStaffTable extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            total: 0,
-            staffList: [],
-            results: [],
-            currentPageNumber: 1,
-            maxPageNumber: 1,
-        }
-        this.getData(1);
-    }
-
-    getData = (pageNumber) => {
-        axios
-            .get(`/v1/employees/`)
-            .then(data => {
-                // console.log(data.data);
-                // const from = (this.state.currentPageNumber - 1) * pageSize + 1
-                // const to = pageSize * this.state.currentPageNumber
-                this.setState({
-                    total: data.data.length,
-                    storeList: data.data,
-                    // results: from == to ? data.data : data.data.slice(from - 1, to),
-                    results: data.data,
-                    maxPageNumber: Math.ceil(data.data.length / pageSize)
-                });
-                // console.log(from + "    " + to);
-                console.log(this.state.results);
-            })
-            .catch(err => alert(err.message))
+export default class StaffTable extends Component {
+    state = {
+        defaultStoreID: this.props.defaultStoreID ? this.props.defaultStoreID : ''
     }
 
     handleDelete = (staffID) => {
@@ -67,7 +36,7 @@ export default class AdminStaffTable extends Component {
                                     <table className="table table-striped mb-0">
                                         <thead className="table-dark">
                                             <tr>
-                                                <th scope="col">Cửa hàng</th>
+                                                {this.props.role == "admin" ? (<th scope="col">Cửa hàng</th>) : null}
                                                 <th scope="col">Tên</th>
                                                 <th scope="col">Card ID</th>
                                                 <th scope="col">Vị trí</th>
@@ -77,10 +46,10 @@ export default class AdminStaffTable extends Component {
                                         </thead>
                                         <tbody>
                                             {/* Staff List */}
-                                            {this.state.results.map((staff) => {
+                                            {this.props.staffList.map((staff) => {
                                                 return (
                                                     <tr>
-                                                        <th scope="row">Cửa hàng {staff.shop_id}</th>
+                                                        {this.props.role == "admin" ? (<th scope="row">Cửa hàng {staff.shop_name}</th>) : null}
                                                         <td>{staff.name}</td>
                                                         <td>{staff.id_card}</td>
                                                         <td>{staff.role}</td>
@@ -95,7 +64,7 @@ export default class AdminStaffTable extends Component {
                                                                 </button>
                                                             </div>
 
-                                                            <EditStaffModal staff={staff} />
+                                                            <EditStaffModal staff={staff} role={this.props.role} />
                                                             <DelConfirmModal objectID={staff.id} deleteMethod={this.handleDelete} />
                                                         </td>
                                                     </tr>
@@ -110,7 +79,7 @@ export default class AdminStaffTable extends Component {
                 </div>
 
                 {/* Modal */}
-                <NewStaffModal />
+                <NewStaffModal defaultStoreID={this.state.defaultStoreID} role={this.props.role} />
             </div>
         )
     }

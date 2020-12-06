@@ -29,6 +29,8 @@ export default class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem('username', this.state.username);
+        if (this.state.role === "manager")
+            localStorage.setItem("storeID", "5");
         window.location.href = `/${this.state.role}`;
     }
 

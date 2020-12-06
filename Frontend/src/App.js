@@ -9,7 +9,8 @@ import ManagerDashboard from './containers/manager/ManagerDashboard';
 import StoreInfo from './components/StoreInfo';
 import ProductPage from './containers/manager/ProductPage';
 import StaffPage from './containers/admin/StaffPage';
-import StaffInfo from './components/StaffInfo';
+import StorePage from './containers/admin/StorePage';
+import ManagerStaffPage from './containers/manager/ManagerStaffPage';
 
 function App() {
   return (
@@ -26,7 +27,10 @@ function App() {
             <Route exact path="/admin/staff" render={(props) => {
               return <StaffPage />
             }} />
-            <Route exact path="/manager/shop" render={(props) => {
+            <Route exact path="/admin/store/:id" render={(props) => {
+              return <StorePage />
+            }} />
+            <Route exact path="/shops/1" render={(props) => {
               return <StoreInfo />
             }} />
             <Route exact path="/manager" render={(props) => {
@@ -37,13 +41,9 @@ function App() {
               )
             }} />
             <Route exact path="/manager/staff" render={(props) => {
-              return (
-                <div>
-                  <StaffInfo />
-                </div>
-              )
+              return <ManagerStaffPage />
             }} />
-            <Route exact path="/manager/items" render={(props) => {
+            <Route exact path="/shops/1/items" render={(props) => {
               return (
                 <div>
                   <ProductPage />

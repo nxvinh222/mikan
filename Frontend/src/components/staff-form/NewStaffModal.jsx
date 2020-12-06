@@ -6,13 +6,14 @@ export default class NewStaffModal extends Component {
         super(props)
         this.state = {
             storeNameList: [],
-            storeID: '',
+            storeID: this.props.defaultStoreID ? this.props.defaultStoreID : '',
             name: '',
             phone: '',
             cardID: '',
             role: ''
         }
-        this.getData();
+        if (this.props.role === "admin")
+            this.getData();
     }
 
     getData = () => {
@@ -57,7 +58,7 @@ export default class NewStaffModal extends Component {
                 console.log('The form was submitted with the following data:');
                 console.log(data.data);
                 alert("Thêm nhân viên thành công");
-                window.location.reload();        
+                window.location.reload();
             })
             .catch(err => alert(err.message))
     }
@@ -77,18 +78,20 @@ export default class NewStaffModal extends Component {
                             </div>
                             <div className="modal-body">
                                 <form className="container">
-                                    <div className="form-group row">
-                                        <label htmlFor="store-name" class="col-sm-4 col-form-label">Cửa hàng</label>
-                                        <div class="col-sm-8">
-                                            <select className="form-control" id="store-name" name="storeID" onChange={this.handleChange}>
-                                                {this.state.storeNameList.map((store) => {
-                                                    return (
-                                                        <option value={store.id}>{store.name}</option>
-                                                    )
-                                                })}
-                                            </select>
+                                    {this.props.role === "admin" ? (
+                                        <div className="form-group row">
+                                            <label htmlFor="store-name" class="col-sm-4 col-form-label">Cửa hàng</label>
+                                            <div class="col-sm-8">
+                                                <select className="form-control" id="store-name" name="storeID" onChange={this.handleChange}>
+                                                    {this.state.storeNameList.map((store) => {
+                                                        return (
+                                                            <option value={store.id}>{store.name}</option>
+                                                        )
+                                                    })}
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
+                                    ) : null}
                                     <div className="form-group row">
                                         <label htmlFor="name" class="col-sm-4 col-form-label">Tên nhân viên</label>
                                         <div class="col-sm-8">
