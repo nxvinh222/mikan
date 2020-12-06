@@ -71,7 +71,7 @@ export default class NewStaffModal extends Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLongTitle">
-                                    <i class="fas fa-plus-circle"></i> Nhân viên mới</h5>
+                                    <i className="fas fa-plus-circle"></i> Nhân viên mới</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -80,8 +80,8 @@ export default class NewStaffModal extends Component {
                                 <form className="container">
                                     {this.props.role === "admin" ? (
                                         <div className="form-group row">
-                                            <label htmlFor="store-name" class="col-sm-4 col-form-label">Cửa hàng</label>
-                                            <div class="col-sm-8">
+                                            <label htmlFor="store-name" className="col-sm-4 col-form-label">Cửa hàng</label>
+                                            <div className="col-sm-8">
                                                 <select className="form-control" id="store-name" name="storeID" onChange={this.handleChange}>
                                                     {this.state.storeNameList.map((store) => {
                                                         return (
@@ -93,29 +93,29 @@ export default class NewStaffModal extends Component {
                                         </div>
                                     ) : null}
                                     <div className="form-group row">
-                                        <label htmlFor="name" class="col-sm-4 col-form-label">Tên nhân viên</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="name" className="col-sm-4 col-form-label">Tên nhân viên</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="name" name="name"
                                                 value={this.state.name} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="role" class="col-sm-4 col-form-label">Vị trí</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="role" className="col-sm-4 col-form-label">Vị trí</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="role" name="role"
                                                 value={this.state.role} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="card" class="col-sm-4 col-form-label">Card ID</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="card" className="col-sm-4 col-form-label">Card ID</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="card" name="cardID"
                                                 value={this.state.cardID} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="phone" class="col-sm-4 col-form-label">Số điện thoại</label>
-                                        <div class="col-sm-8">
+                                        <label htmlFor="phone" className="col-sm-4 col-form-label">Số điện thoại</label>
+                                        <div className="col-sm-8">
                                             <input className="form-control" id="phone" name="phone"
                                                 value={this.state.phone} onChange={this.handleChange} />
                                         </div>

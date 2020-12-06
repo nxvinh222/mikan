@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import '../assets/css/login.css'
+import axios from '../axios';
 
 export default class Login extends Component {
     state = {
@@ -28,10 +29,24 @@ export default class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.setItem('username', this.state.username);
-        if (this.state.role === "manager")
-            localStorage.setItem("storeID", "5");
-        window.location.href = `/${this.state.role}`;
+        axios
+            .post(`/v1/login`, {
+                username: this.state.username,
+                password: this.state.password
+            })
+            .then(data => {
+                localStorage.setItem('username', data.data.username);
+                localStorage.setItem('role', data.data.role);
+                if (data.data.role === 'manager')
+                    localStorage.setItem('storeID', data.data.shop_id);
+                window.location.href = `/${this.state.role}`;
+                // console.log(this.state.role);
+            })
+            .catch(err => console.log(err))
+        // localStorage.setItem('username', this.state.username);
+        // if (this.state.role === "manager")
+        //     localStorage.setItem("storeID", "5");
+        // window.location.href = `/${this.state.role}`;
     }
 
     render() {

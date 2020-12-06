@@ -11,8 +11,8 @@ export default class AdminDashboard extends Component {
     // simple check admin
     // TODO: check này có đơn giản quá hay không ??
     _checkAdmin = function () {
-        console.log(window.localStorage.getItem('username'));
-        if (window.localStorage.getItem('username') !== 'admin') {
+        // console.log(window.localStorage.getItem('username'));
+        if (window.localStorage.getItem('role') !== 'admin') {
             // alert("You do not have permission to access");
             window.location.href = "/"
         }
