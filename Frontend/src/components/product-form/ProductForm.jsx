@@ -21,11 +21,28 @@ export default class ProductFrom extends Component {
         })
     }
 
-    handleSubmit = (event) => {
+    handleAddSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state)
+        // console.log(this.state)
         // axios
         //     .post(`/v1/shops/1/items`, {
+        //         item_name: this.state.item_name,
+        //         price: this.state.price,
+        //         description: this.state.description,
+        //         quantity: this.state.quantity
+        //     })
+        //     .then(() => {
+        //         window.location.href = '/v1/shops/1/items'
+        //     })
+        //     .catch(err => console.log(err))
+
+    }
+
+    handleEditSubmit = (event) => {
+        event.preventDefault();
+        // console.log(this.state)
+        // axios
+        //     .put(`/v1/shops/1/items`, {
         //         item_name: this.state.item_name,
         //         price: this.state.price,
         //         description: this.state.description,
@@ -41,7 +58,7 @@ export default class ProductFrom extends Component {
         return (
             <div>
                 <div className="container">
-                    <form id="contact-form" role="form" onSubmit={this.handleSubmit}>
+                    <form id="contact-form" role="form" onSubmit={this.props.action == "add" ? this.handleAddSubmit : this.handleEditSubmit}>
                         <div className="controls">
                             <div className="row">
                                 <div className="col-md-12">

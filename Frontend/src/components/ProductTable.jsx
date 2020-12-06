@@ -24,6 +24,18 @@ class ProductTable extends Component {
             .catch(err => console.log(err))
     }
 
+    handleDelete = (itemID) => {
+        // console.log(this.props.storeID);
+        axios
+        .delete(`/v1/shops/1/${itemID}`)
+        .then(data => {
+            console.log(data.data);
+            alert("Xóa sản phẩm thành công");  
+            window.location.reload();
+        })
+        .catch(err => alert(err.message))
+    }
+
     render() {
         const all_items = this.state.items.map(item =>
             <tr>
@@ -41,7 +53,7 @@ class ProductTable extends Component {
                             // value={store.id} onClick={this.handleStoreChange}
                             data-toggle="modal" data-target={`#EditItemModal${item.id}`}>
                             <i className="fas fa-edit"></i></button>
-                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#DelItemModal${item.id}`}>
+                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${item.id}`}>
                             <i className="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -49,10 +61,10 @@ class ProductTable extends Component {
                 {/* Edit Modal */}
                 <EditProductModal item={item} />
                 {/*  Delete Modal*/}
-                <DelConfirmModal item={item} />
+                <DelConfirmModal item={item} deleteMethod={this.handleDelete} objectID={item.id} />
             </tr>)
         return (
-            <div className="container">
+            <div className="container" style={{ height: "100vh" }}>
                 <Toolbar />
                 <div className="row">
                     <div className="col-12">

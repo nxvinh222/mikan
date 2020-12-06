@@ -34,13 +34,13 @@ export default class Navbar extends Component {
                                 </li>
                                 {this.props.role !== 'admin' ? (
                                     <li className="nav-item">
-                                        <a className="nav-link js-scroll-trigger" href="/shops/1">
+                                        <a className="nav-link js-scroll-trigger" href="/manager/shop">
                                             <i className="fas fa-store"></i> Cửa hàng</a>
                                     </li>
                                 ) : null}
                                 <li className="nav-item">
                                 {this.props.role !== 'admin' ? (
-                                    <a className="nav-link js-scroll-trigger" href="#staff">
+                                    <a className="nav-link js-scroll-trigger" href="/manager/staff">
                                         <i className="fas fa-user-friends"></i> Nhân viên</a>
                                 ) : (
                                     <a className="nav-link js-scroll-trigger" href="/admin/staff">
@@ -49,7 +49,7 @@ export default class Navbar extends Component {
                                 </li>
                                 {this.props.role !== 'admin' ? (
                                     <li className="nav-item">
-                                        <a className="nav-link js-scroll-trigger" href="/shops/1/items">
+                                        <a className="nav-link js-scroll-trigger" href="/manager/items">
                                             <i className="fas fa-cube"></i> Hàng hóa</a>
                                     </li>
                                 ) : null}

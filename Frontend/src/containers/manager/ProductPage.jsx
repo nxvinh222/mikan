@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import ProductTable from '../../components/ProductTable';
 
 class ProductPage extends Component {
+    
     render() {
         return (
             <div>

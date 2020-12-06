@@ -26,7 +26,7 @@ export default class AddProductModal extends Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <ProductForm item={this.state.item}/>
+                                <ProductForm item={this.state.item} action="add" />
                             </div>
                             {/* <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

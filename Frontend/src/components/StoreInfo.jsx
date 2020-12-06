@@ -1,39 +1,32 @@
 import React, { Component } from 'react';
 import '../assets/css/storedetail.css';
-
-import storeData from '../data/storeList'
 import Footer from './Footer';
 import Navbar from './Navbar';
+import axios from '../axios';
 
 class StoreInfo extends Component {
-    constructor(props) {
-        super(props)
 
-        this.state = {
-            storeID: window.location.pathname.split('/').pop(),
-            store: {},
-        }
-        this.getData(this.state.storeID);
+    state = {
+        shop: {}
     }
 
-    getData = async (id) => {
-        try {
-            const data = await storeData[parseInt(this.state.storeID) - 1];
-            // console.log(data);
-
-            this.setState({
-                store: data
-            });
-        } catch (err) {
-            alert(err.message);
-        }
+    componentDidMount() {
+        axios
+            .get(`/v1/shops/1`)
+            .then(data => {
+                this.setState({
+                    shop: data.data
+                })
+                console.log(this.state.shop)
+            })
+            .catch(err => console.log(err))
     }
 
     render() {
         return (
             <div>
                 <Navbar role="manager" />
-                <div className="col-sm-12 col-md-12 col-lg-12">
+                <div className="col-sm-12 col-md-12 col-lg-12" style={{ height: "100vh"}}>
                     {/* product */}
                     <div className="product-content product-wrap clearfix product-detail">
                         <div className="row">
@@ -72,8 +65,8 @@ class StoreInfo extends Component {
                             </div>
                             <div className="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                                 <h2 className="name">
-                                    Circle K
-                <small>6 Ngõ 71 Láng Hạ, Đống Đa</small>
+                                    {this.state.shop.shop_name}
+                                    <small>{this.state.shop.shop_address}</small>
                                     <i className="fa fa-star fa-2x text-primary" />
                                     <i className="fa fa-star fa-2x text-primary" />
                                     <i className="fa fa-star fa-2x text-primary" />
@@ -83,111 +76,9 @@ class StoreInfo extends Component {
                                     <a href="javascript:void(0);">109 customer reviews</a>
                                 </h2>
                                 <hr />
-                                <button type="button" className="btn btn-dark"><span><i className="fas fa-phone-alt" /></span>Gọi để đặt bàn<span className="text-bold font18 pl-2">0981524316</span></button>
-                                <div><span><i className="far fa-clock" /></span>: 8h30 - 12h</div>
-                                <div><span><i className="fas fa-dollar-sign" /></span>: Giá trung bình: 100,000 - 200,000 đ</div>
-                                <hr />
-                                <div className="description description-tabs">
-                                    <ul id="myTab" className="nav nav-pills">
-                                        <li className="nav-item"><a href="#more-information" data-toggle="tab" className="no-margin">Product Description </a></li>
-                                        <li className="nav-item"><a href="#specifications" data-toggle="tab">Specifications</a></li>
-                                        <li className="nav-item"><a href="#reviews" data-toggle="tab">Reviews</a></li>
-                                    </ul>
-                                    <div id="myTabContent" className="tab-content">
-                                        <div className="tab-pane fade active in" id="more-information">
-                                            <br />
-                                            <strong>Description Title</strong>
-                                            <p>
-                                                Integer egestas, orci id condimentum eleifend, nibh nisi pulvinar eros, vitae ornare massa neque ut orci. Nam aliquet lectus sed odio eleifend, at iaculis dolor egestas. Nunc elementum pellentesque augue
-                                                sodales porta. Etiam aliquet rutrum turpis, feugiat sodales ipsum consectetur nec.
-                    </p>
-                                        </div>
-                                        <div className="tab-pane fade" id="specifications">
-                                            <br />
-                                            <dl className>
-                                                <dt>Gravina</dt>
-                                                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                                                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                                                <dd>Eget lacinia odio sem nec elit.</dd>
-                                                <br />
-                                                <dt>Test lists</dt>
-                                                <dd>A description list is perfect for defining terms.</dd>
-                                                <br />
-                                                <dt>Altra porta</dt>
-                                                <dd>Vestibulum id ligula porta felis euismod semper</dd>
-                                            </dl>
-                                        </div>
-                                        <div className="tab-pane fade" id="reviews">
-                                            <br />
-                                            <form method="post" className="well padding-bottom-10" onsubmit="return false;">
-                                                <textarea rows={2} className="form-control" placeholder="Write a review" defaultValue={""} />
-                                                <div className="margin-top-10">
-                                                    <button type="submit" className="btn btn-sm btn-primary pull-right">
-                                                        Submit Review
-                        </button>
-                                                    <a href="javascript:void(0);" className="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title data-original-title="Add Location"><i className="fa fa-location-arrow" /></a>
-                                                    <a href="javascript:void(0);" className="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title data-original-title="Add Voice"><i className="fa fa-microphone" /></a>
-                                                    <a href="javascript:void(0);" className="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title data-original-title="Add Photo"><i className="fa fa-camera" /></a>
-                                                    <a href="javascript:void(0);" className="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title data-original-title="Add File"><i className="fa fa-file" /></a>
-                                                </div>
-                                            </form>
-                                            <div className="chat-body no-padding profile-message">
-                                                <ul>
-                                                    <li className="message">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" className="online" />
-                                                        <span className="message-text">
-                                                            <a href="javascript:void(0);" className="username">
-                                                                Alisha Molly
-                              <span className="badge">Purchase Verified</span>
-                                                                <span className="pull-right">
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                    <i className="fa fa-star fa-2x text-muted" />
-                                                                </span>
-                                                            </a>
-                            Can't divide were divide fish forth fish to. Was can't form the, living life grass darkness very image let unto fowl isn't in blessed fill life yielding above all moved
-                          </span>
-                                                        <ul className="list-inline font-xs">
-                                                            <li>
-                                                                <a href="javascript:void(0);" className="text-info"><i className="fa fa-thumbs-up" /> This was helpful (22)</a>
-                                                            </li>
-                                                            <li className="pull-right">
-                                                                <small className="text-muted pull-right ultra-light"> Posted 1 year ago </small>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="message">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" className="online" />
-                                                        <span className="message-text">
-                                                            <a href="javascript:void(0);" className="username">
-                                                                Aragon Zarko
-                              <span className="badge">Purchase Verified</span>
-                                                                <span className="pull-right">
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                    <i className="fa fa-star fa-2x text-primary" />
-                                                                </span>
-                                                            </a>
-                            Excellent product, love it!
-                          </span>
-                                                        <ul className="list-inline font-xs">
-                                                            <li>
-                                                                <a href="javascript:void(0);" className="text-info"><i className="fa fa-thumbs-up" /> This was helpful (22)</a>
-                                                            </li>
-                                                            <li className="pull-right">
-                                                                <small className="text-muted pull-right ultra-light"> Posted 1 year ago </small>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button type="button" className="btn btn-dark"><span><i className="fas fa-phone-alt" /></span>Liên hệ<span className="text-bold font18 pl-2">0981524316</span></button>
+                                <div><span><i className="far fa-clock" /></span>Người quản lý : {this.state.shop.manager_name}</div>
+                                <div><span><i className="fas fa-dollar-sign" /></span>Số điện thoại quản lý: {this.state.shop.manager_phone}</div>
                                 <hr />
                                 <div className="row">
                                     <div className="col-sm-12 col-md-6 col-lg-6">
