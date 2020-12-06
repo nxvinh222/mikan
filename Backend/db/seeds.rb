@@ -57,3 +57,11 @@ Employee.create!(
     role: "cash",
     shop_name: "Peak Sword"
 )
+
+User.create!(
+    username: "Chien",
+    password: "123456",
+    password_confirmation: "123456",
+    shop_id: 1,
+    role: "admin"
+)
