@@ -6,11 +6,8 @@ export default class NewStoreModal extends Component {
         storeName: '',
         address: '',
         hotline: '',
-        imgURL: '',
         managerName: '',
-        managerPhone: '',
-        managerAccount: '',
-        managerPass: ''
+        managerPhone: ''
     }
 
     handleChange = (event) => {
@@ -79,12 +76,6 @@ export default class NewStoreModal extends Component {
                                                 value={this.state.hotline} onChange={this.handleChange} />
                                         </div>
                                     </div>
-                                    <div className="form-group row">
-                                        <label htmlFor="hotline" className="col-sm-4 col-form-label">Ảnh</label>
-                                        <div className="col-sm-8">
-                                            <input type="file" id="storeImage" />
-                                        </div>
-                                    </div>
                                     <hr />
                                     <div className="form-group row">
                                         <label htmlFor="manager" className="col-sm-4 col-form-label">Tên quản lý</label>
@@ -98,20 +89,6 @@ export default class NewStoreModal extends Component {
                                         <div className="col-sm-8">
                                             <input className="form-control" id="manager-phone" name="managerPhone"
                                                 value={this.state.managerPhone} onChange={this.handleChange} />
-                                        </div>
-                                    </div>
-                                    <div className="form-group row">
-                                        <label htmlFor="account" className="col-sm-4 col-form-label">Tài khoản</label>
-                                        <div className="col-sm-8">
-                                            <input className="form-control" id="account" name="managerAccount"
-                                                value={this.state.managerAccount} onChange={this.handleChange} />
-                                        </div>
-                                    </div>
-                                    <div className="form-group row">
-                                        <label htmlFor="password" className="col-sm-4 col-form-label">Mật khẩu</label>
-                                        <div className="col-sm-8">
-                                            <input type="password" className="form-control" id="password" name="managerPass"
-                                                value={this.state.managerPass} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="row">

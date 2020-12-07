@@ -30,7 +30,7 @@ function App() {
             <Route exact path="/admin/store/:id" render={(props) => {
               return <StorePage />
             }} />
-            <Route exact path="/shops/1" render={(props) => {
+            <Route exact path="/manager/shop" render={(props) => {
               return <StoreInfo />
             }} />
             <Route exact path="/manager" render={(props) => {
@@ -43,7 +43,7 @@ function App() {
             <Route exact path="/manager/staff" render={(props) => {
               return <ManagerStaffPage />
             }} />
-            <Route exact path="/shops/1/items" render={(props) => {
+            <Route exact path="/manager/items" render={(props) => {
               return (
                 <div>
                   <ProductPage />

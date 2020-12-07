@@ -9,11 +9,8 @@ export default class EditStoreModal extends Component {
             storeName: this.props.store.shop_name,
             address: this.props.store.shop_address,
             hotline: this.props.store.hotline,
-            imgURL: '',
             managerName: this.props.store.manager_name,
-            managerPhone: this.props.store.manager_phone,
-            managerAccount: '',
-            managerPass: ''
+            managerPhone: this.props.store.manager_phone
         }
         // this.getData();
     }
@@ -84,12 +81,6 @@ export default class EditStoreModal extends Component {
                                                 value={this.state.hotline} onChange={this.handleChange} />
                                         </div>
                                     </div>
-                                    <div className="form-group row">
-                                        <label htmlFor="hotline" className="col-sm-4 col-form-label">Ảnh</label>
-                                        <div className="col-sm-8">
-                                            <input type="file" id="storeImage" />
-                                        </div>
-                                    </div>
                                     <hr />
                                     <div className="form-group row">
                                         <label htmlFor="manager" className="col-sm-4 col-form-label">Tên quản lý</label>
@@ -103,20 +94,6 @@ export default class EditStoreModal extends Component {
                                         <div className="col-sm-8">
                                             <input className="form-control" id="manager-phone" name="managerPhone"
                                                 value={this.state.managerPhone} onChange={this.handleChange} />
-                                        </div>
-                                    </div>
-                                    <div className="form-group row">
-                                        <label htmlFor="account" className="col-sm-4 col-form-label">Tài khoản</label>
-                                        <div className="col-sm-8">
-                                            <input className="form-control" id="account" name="managerAccount"
-                                                value={this.state.managerAccount} onChange={this.handleChange} />
-                                        </div>
-                                    </div>
-                                    <div className="form-group row">
-                                        <label htmlFor="password" className="col-sm-4 col-form-label">Mật khẩu</label>
-                                        <div className="col-sm-8">
-                                            <input type="password" className="form-control" id="password" name="managerPass"
-                                                value={this.state.managerPass} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="row">
