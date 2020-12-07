@@ -10,6 +10,7 @@ class V1::EmployeesController < ApplicationController
     #POST /employees
     def create
         @employee = Employee.new(employee_params)
+        @employee.shop_name = @employee.shop.shop_name
         if @employee.save
             render json: @employee, status: :created
         else
