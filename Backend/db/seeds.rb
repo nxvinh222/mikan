@@ -59,9 +59,8 @@ Employee.create!(
 )
 
 User.create!(
-    username: "Chien",
+    username: "admin",
     password: "123456",
-    password_confirmation: "123456",
-    shop_id: 1,
-    role: "admin"
+    shop_id: 9999,
+    admin: true
 )

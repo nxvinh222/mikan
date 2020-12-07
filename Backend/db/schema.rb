@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_12_05_174123) do
     t.string "username"
     t.string "password_digest"
     t.integer "shop_id"
-    t.string "role"
+    t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
