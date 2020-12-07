@@ -1,9 +1,12 @@
 class V1::SessionsController < ApplicationController
+  include SessionsHelper
+
 	def create
     user = User.where(username: params[:session][:username]).first
     if user && user.authenticate(params[:session][:password])
       # Log the user in and redirect to the user's show page.
-			session[:user_id] = user.id
+      # session[:user_id] = user.id
+      log_in(user)
 			render json: {
         loginSuccess: true,
         username: user.username,
