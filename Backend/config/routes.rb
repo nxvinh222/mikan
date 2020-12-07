@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     post '/shops/items', to: 'item_quantities#addItems'
     # put '/shops/items', to: 'item_quantities#editItems'
     get '/shops/:id/employees', to: 'shops#getEmployees'
+    get 'shops/:id/revenue', to: 'shops#getRevenue'
 
 
     post  '/login',   to: 'sessions#create'
