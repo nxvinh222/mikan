@@ -9,7 +9,7 @@ export default class ManagerStaffPage extends Component {
         super(props)
 
         this.state = {
-            storeID: window.localStorage.getItem("storeID"),
+            storeID: window.localStorage.getItem("username"),
             total: 0,
             staffList: [],
             results: [],

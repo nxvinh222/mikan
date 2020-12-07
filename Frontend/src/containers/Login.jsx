@@ -79,7 +79,7 @@ export default class Login extends Component {
                                         </div>
                                         <p style={{ color: "red", marginLeft: "15px" }}> {this.state.errMessage}</p>
                                         <hr className="my-4" />
-                                        <button className="btn btn-lg btn-manager btn-block text-uppercase" type="submit">Đăng nhập</button>
+                                        <button className="btn btn-lg btn-admin btn-block text-uppercase" type="submit">Đăng nhập</button>
                                     </form>
                                 </div>
                             </div>

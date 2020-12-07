@@ -59,8 +59,8 @@ export default class Navbar extends Component {
                             {/* Account Button */}
                             <div className="account ml-auto text-white">
                                 <div>
-                                    <b className="">{window.localStorage.getItem('username')}</b>
-                                    <a href="/" onClick={this.signOut}><i className="fas fa-sign-out-alt textwhite"></i> Đăng xuất</a>
+                                    <b className="">{this.props.role === 'admin' ? ("TK: admin "): (`TK: shop-${window.localStorage.getItem('username')}  `)}</b>
+                                    <a href="/" onClick={this.signOut} style={{marginLeft: "10px", color: "white", textDecoration: "none"}}><i className="fas fa-sign-out-alt"></i>Thoát</a>
                                 </div>
                             </div>
                         </div>
