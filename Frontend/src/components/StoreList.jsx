@@ -3,7 +3,6 @@ import axios from '../axios.js'
 
 import '../assets/css/store.css'
 import storeImg from '../data/storeImg'
-import Toolbar from './Toolbar';
 import NewStoreModal from './store-form/NewStoreModal';
 import EditStoreModal from './store-form/EditStoreModal';
 import DelConfirmModel from './DelConfirmModal';
