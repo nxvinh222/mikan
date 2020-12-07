@@ -5,10 +5,9 @@ class V1::UsersController < ApplicationController
 
     if @user.save
       render json:{
-        id: @user.id,
         username: @user.username,
         shop_id: @user.shop_id,
-        admin: @user.admin
+        admin: false
       }, status: :created
     else
       render json: {
@@ -19,7 +18,7 @@ class V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :shop_id, :admin)
+    params.require(:user).permit(:username, :password, :password_confirmation, :shop_id)
   end
 
 end
