@@ -42,6 +42,9 @@ class App extends Component {
               <Route exact path="/manager/shop" render={(props) => {
                 return <StoreInfo />
               }} />
+              <Route exact path="/admin/items" render={(props) => {
+                return <ProductPage />
+              }} />
               <Route exact path="/manager" render={(props) => {
                 return (
                   <div>

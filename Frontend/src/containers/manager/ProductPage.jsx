@@ -4,12 +4,14 @@ import Navbar from '../../components/Navbar';
 import ProductTable from '../../components/ProductTable';
 
 class ProductPage extends Component {
-    
+
     render() {
         return (
             <div>
-                <Navbar role="manager" />
-                <ProductTable />
+                <Navbar role={window.localStorage.getItem('username') == 'admin' ? 'admin' : 'manager'} />
+                <div className="mt-3">
+                    <ProductTable />
+                </div>
                 <Footer />
             </div>
         );

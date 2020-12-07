@@ -49,12 +49,10 @@ export default class Navbar extends Component {
                                     <a className="nav-link js-scroll-trigger" href={`/${this.props.role}/staff`}>
                                         <i className="fas fa-user-friends"></i> Nhân viên</a>
                                 </li>
-                                {this.props.role !== 'admin' ? (
-                                    <li className="nav-item">
-                                        <a className="nav-link js-scroll-trigger" href="/manager/items">
-                                            <i className="fas fa-cube"></i> Hàng hóa</a>
-                                    </li>
-                                ) : null}
+                                <li className="nav-item">
+                                    <a className="nav-link js-scroll-trigger" href={`/${this.props.role}/items`}>
+                                        <i className="fas fa-cube"></i> Hàng hóa</a>
+                                </li>
                             </ul>
                             {/* Account Button */}
                             <div className="account ml-auto text-white">

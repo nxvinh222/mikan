@@ -13,7 +13,7 @@ class ProductTable extends Component {
 
     componentDidMount() {
         axios
-            .get(`/v1/shops/${window.localStorage.getItem('username')}/items`)
+            .get(`/v1/${window.localStorage.getItem('username') == 'admin' ? '' : `shops/${window.localStorage.getItem('username')}/`}items`)
             .then(data => {
                 this.setState({
                     items: data.data
@@ -24,7 +24,6 @@ class ProductTable extends Component {
     }
 
     handleDelete = (itemID) => {
-        // console.log(this.props.storeID);
         axios
             .delete(`/v1/shops/${window.localStorage.getItem('username')}/${itemID}`)
             .then(data => {
@@ -46,21 +45,18 @@ class ProductTable extends Component {
                 <td>{item.price}$</td>
                 <td>{item.description}</td>
                 <td>{item.quantity}</td>
-                <td>
+                {/* <td>
                     <div className="widget-26-job-starred">
                         <button type="button" className="btn btn-outline-danger btn-sm mr-2"
-                            // value={store.id} onClick={this.handleStoreChange}
                             data-toggle="modal" data-target={`#EditItemModal${item.id}`}>
                             <i className="fas fa-edit"></i></button>
                         <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${item.id}`}>
                             <i className="fas fa-trash-alt"></i>
                         </button>
                     </div>
-                </td>
-                {/* Edit Modal */}
-                <EditProductModal item={item} />
+                </td> */}
                 {/*  Delete Modal*/}
-                <DelConfirmModal item={item} deleteMethod={this.handleDelete} objectID={item.id} />
+                {/* <DelConfirmModal item={item} deleteMethod={this.handleDelete} objectID={item.id} /> */}
             </tr>)
         return (
             <div className="container" style={{ height: "100vh" }}>
@@ -83,7 +79,7 @@ class ProductTable extends Component {
                                                                 <th scope="col">Giá</th>
                                                                 <th scope="col">Mô tả</th>
                                                                 <th scope="col">Số lượng</th>
-                                                                <th scope="col">Actions</th>
+                                                                {/* <th scope="col">Actions</th> */}
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -120,7 +116,7 @@ class ProductTable extends Component {
                     </div>
                 </div>
                 {/*  Add Modal*/}
-                <AddProductModal />
+                <AddProductModal items={this.state.items} />
             </div>
         );
     }
