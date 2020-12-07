@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
+import axios from '../axios'
 import logo from '../assets/img/MIKAN-logo.png';
 
 import '../assets/css/navbar.css'
 
 export default class Navbar extends Component {
     signOut = () => {
-        localStorage.removeItem("username");
-        window.location.href = '/'
+        axios
+            .delete(`/v1/logout`)
+            .then(data => {
+                console.log(data.data);
+                localStorage.removeItem("username");
+                window.location.href = '/'
+            })
+            .catch(err => alert(err))
     }
 
     render() {
