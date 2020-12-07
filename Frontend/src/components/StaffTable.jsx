@@ -49,7 +49,7 @@ export default class StaffTable extends Component {
                                             {this.props.staffList.map((staff) => {
                                                 return (
                                                     <tr>
-                                                        {this.props.role == "admin" ? (<th scope="row">Cửa hàng {staff.shop_name}</th>) : null}
+                                                        {this.props.role == "admin" ? (<th scope="row">{staff.shop_name}</th>) : null}
                                                         <td>{staff.name}</td>
                                                         <td>{staff.id_card}</td>
                                                         <td>{staff.role}</td>

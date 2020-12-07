@@ -29,20 +29,20 @@ export default class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        axios
-            .post(`/v1/login`, {
-                username: this.state.username,
-                password: this.state.password
-            })
-            .then(data => {
-                localStorage.setItem('username', data.data.username);
-                localStorage.setItem('role', data.data.role);
-                if (data.data.role === 'manager')
-                    localStorage.setItem('storeID', data.data.shop_id);
+        // axios
+        //     .post(`/v1/login`, {
+        //         username: this.state.username,
+        //         password: this.state.password
+        //     })
+        //     .then(data => {
+                localStorage.setItem('username', 'admin');
+                localStorage.setItem('role', 'admin');
+                // if (data.data.role === 'manager')
+                //     localStorage.setItem('storeID', data.data.shop_id);
                 window.location.href = `/${this.state.role}`;
                 // console.log(this.state.role);
-            })
-            .catch(err => console.log(err))
+            // })
+            // .catch(err => console.log(err))
         // localStorage.setItem('username', this.state.username);
         // if (this.state.role === "manager")
         //     localStorage.setItem("storeID", "5");
