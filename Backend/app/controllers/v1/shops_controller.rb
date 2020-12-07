@@ -34,7 +34,14 @@ class V1::ShopsController < ApplicationController
         @shop = Shop.new(shop_params)
         @shop.save
 
-        render json:@shop, status: :created
+        render json:{
+            id: @shop.id
+            shop_name: @shop.shop_name,
+            shop_address: @shop.shop_address,
+            manager_name: @shop.manager_name,
+            manager_phone: @shop.manager_phone,
+            hotline: @shop.hotline
+        }, status: :created
     end
 
     #PUT /shops/:id

@@ -15,7 +15,7 @@ class V1::SessionsController < ApplicationController
       render json: {
         loginSuccess: false,
         message: "Invalid username or password"
-      }, status: :unauthorized
+      }, status: :ok
     end
   end
 
