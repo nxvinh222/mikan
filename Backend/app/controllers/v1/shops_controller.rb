@@ -35,7 +35,7 @@ class V1::ShopsController < ApplicationController
         @shop.save
 
         render json:{
-            id: @shop.id
+            id: @shop.id,
             shop_name: @shop.shop_name,
             shop_address: @shop.shop_address,
             manager_name: @shop.manager_name,
@@ -86,6 +86,7 @@ class V1::ShopsController < ApplicationController
         render json: @items, status: :ok
     end
 
+
     #GET /shop/:id/employees
     def getEmployees
         @shop = Shop.where(id: params[:id]).first
@@ -98,4 +99,5 @@ class V1::ShopsController < ApplicationController
     def shop_params
         params.require(:shop).permit(:shop_name, :shop_address, :manager_name, :manager_phone, :hotline)
     end
+
 end
