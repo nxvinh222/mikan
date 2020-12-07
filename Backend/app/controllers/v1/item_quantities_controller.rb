@@ -8,7 +8,7 @@ class V1::ItemQuantitiesController < ApplicationController
         render json: {
             createSucceed: true,
             message: "Add item succeed",
-            admin: V1::SessionsController.current_user
+            admin: current_user
         }
     end
 
