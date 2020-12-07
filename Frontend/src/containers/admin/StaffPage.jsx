@@ -20,6 +20,8 @@ export default class StaffPage extends Component {
             currentPageNumber: 1,
             maxPageNumber: 1,
         }
+        
+        this.props.checkAdmin();
         this.getData(1);
     }
 

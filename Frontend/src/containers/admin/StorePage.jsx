@@ -17,9 +17,11 @@ export default class StaffPage extends Component {
             currentPageNumber: 1,
             maxPageNumber: 1,
         }
+        
+        this.props.checkAdmin();
         this.getData(1);
     }
-
+    
     getData = (pageNumber) => {
         axios
             .get(`/v1/shops/${this.state.storeID}/employees`)

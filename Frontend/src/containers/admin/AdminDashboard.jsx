@@ -5,18 +5,8 @@ import StoreList from '../../components/StoreList'
 
 export default class AdminDashboard extends Component {
     componentWillMount() {
-        this._checkAdmin();
+        this.props.checkAdmin();
     }
-
-    // simple check admin
-    // TODO: check này có đơn giản quá hay không ??
-    _checkAdmin = function () {
-        // console.log(window.localStorage.getItem('username'));
-        if (window.localStorage.getItem('role') !== 'admin') {
-            // alert("You do not have permission to access");
-            window.location.href = "/"
-        }
-    };
 
     render() {
         return (

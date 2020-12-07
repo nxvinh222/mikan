@@ -7,7 +7,8 @@ export default class NewStoreModal extends Component {
         address: '',
         hotline: '',
         managerName: '',
-        managerPhone: ''
+        managerPhone: '',
+        managerPass: ''
     }
 
     handleChange = (event) => {
@@ -19,6 +20,8 @@ export default class NewStoreModal extends Component {
             [name]: value
         });
     }
+
+
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -32,10 +35,25 @@ export default class NewStoreModal extends Component {
                 hotline: this.state.hotline
             })
             .then(data => {
-                // console.log('The form was submitted with the following data:');
-                // console.log(data.data);
+                console.log('The form was submitted with the following data:');
+                console.log(data.data);
                 alert("Tạo cửa hàng thành công");
-                window.location.reload();        
+                axios
+                    .post('/v1/signup', {
+                        user: {
+                            username: `shop-${data.data.id}`,
+                            password: this.state.managerPass,
+                            password_confirmation: this.state.managerPass,
+                            shop_id: data.data.id
+                        }
+                    })
+                    .then(res => {
+                        console.log('The form was submitted with the following data:');
+                        console.log(res.data);
+                        alert("Tạo tài khoản quản lý thành công");
+                        window.location.reload();
+                    })
+                    .catch(err => alert(err.message))
             })
             .catch(err => alert(err.message))
     }
@@ -89,6 +107,13 @@ export default class NewStoreModal extends Component {
                                         <div className="col-sm-8">
                                             <input className="form-control" id="manager-phone" name="managerPhone"
                                                 value={this.state.managerPhone} onChange={this.handleChange} />
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label htmlFor="password" className="col-sm-4 col-form-label">Mật khẩu</label>
+                                        <div className="col-sm-8">
+                                            <input type="password" className="form-control" id="password" name="managerPass"
+                                                value={this.state.managerPass} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="row">

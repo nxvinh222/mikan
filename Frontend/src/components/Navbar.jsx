@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
+import axios from '../axios'
 import logo from '../assets/img/MIKAN-logo.png';
 
 import '../assets/css/navbar.css'
 
 export default class Navbar extends Component {
     signOut = () => {
-        localStorage.removeItem("username");
-        window.location.href = '/'
+        axios
+            .delete(`/v1/logout`)
+            .then(data => {
+                console.log(data.data);
+                localStorage.removeItem("username");
+                window.location.href = '/'
+            })
+            .catch(err => alert(err))
     }
 
     render() {
@@ -42,18 +49,16 @@ export default class Navbar extends Component {
                                     <a className="nav-link js-scroll-trigger" href={`/${this.props.role}/staff`}>
                                         <i className="fas fa-user-friends"></i> Nhân viên</a>
                                 </li>
-                                {this.props.role !== 'admin' ? (
-                                    <li className="nav-item">
-                                        <a className="nav-link js-scroll-trigger" href="/manager/items">
-                                            <i className="fas fa-cube"></i> Hàng hóa</a>
-                                    </li>
-                                ) : null}
+                                <li className="nav-item">
+                                    <a className="nav-link js-scroll-trigger" href={`/${this.props.role}/items`}>
+                                        <i className="fas fa-cube"></i> Hàng hóa</a>
+                                </li>
                             </ul>
                             {/* Account Button */}
                             <div className="account ml-auto text-white">
                                 <div>
-                                    <b className="">{window.localStorage.getItem('username')}</b>
-                                    <a href="/" onClick={this.signOut}><i className="fas fa-sign-out-alt textwhite"></i> Đăng xuất</a>
+                                    <b className="">{this.props.role === 'admin' ? ("TK: admin "): (`TK: shop-${window.localStorage.getItem('username')}  `)}</b>
+                                    <a href="/" onClick={this.signOut} style={{marginLeft: "10px", color: "white", textDecoration: "none"}}><i className="fas fa-sign-out-alt"></i>Thoát</a>
                                 </div>
                             </div>
                         </div>

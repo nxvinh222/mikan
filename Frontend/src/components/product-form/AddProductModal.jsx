@@ -26,12 +26,8 @@ export default class AddProductModal extends Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <ProductForm item={this.state.item} action="add" />
+                                <ProductForm item={this.state.item} items={this.props.items} action="add" />
                             </div>
-                            {/* <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary">Save changes</button>
-                            </div> */}
                         </div>
                     </div>
                 </div>

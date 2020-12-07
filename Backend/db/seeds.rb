@@ -64,3 +64,10 @@ User.create!(
     shop_id: 9999,
     admin: true
 )
+
+User.create!(
+    username: "manager",
+    password: "123456",
+    shop_id: 1,
+    admin: false
+)
