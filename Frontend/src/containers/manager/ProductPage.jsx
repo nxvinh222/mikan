@@ -8,9 +8,9 @@ class ProductPage extends Component {
     render() {
         return (
             <div>
-                <Navbar role={window.localStorage.getItem('username') == 'admin' ? 'admin' : 'manager'} />
+                <Navbar role={this.props.role} />
                 <div className="mt-3">
-                    <ProductTable />
+                    <ProductTable role={this.props.role} />
                 </div>
                 <Footer />
             </div>

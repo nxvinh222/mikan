@@ -25,7 +25,7 @@ class ProductTable extends Component {
 
     handleDelete = (itemID) => {
         axios
-            .delete(`/v1/shops/${window.localStorage.getItem('username')}/${itemID}`)
+            .delete(`/v1/item/${itemID}`)
             .then(data => {
                 console.log(data.data);
                 alert("Xóa sản phẩm thành công");
@@ -45,18 +45,21 @@ class ProductTable extends Component {
                 <td>{item.price}$</td>
                 <td>{item.description}</td>
                 <td>{item.quantity}</td>
-                {/* <td>
-                    <div className="widget-26-job-starred">
-                        <button type="button" className="btn btn-outline-danger btn-sm mr-2"
-                            data-toggle="modal" data-target={`#EditItemModal${item.id}`}>
-                            <i className="fas fa-edit"></i></button>
-                        <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${item.id}`}>
-                            <i className="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
-                </td> */}
+                {this.props.role == 'admin' ?
+                    <td>
+                        <div className="widget-26-job-starred">
+                            <button type="button" className="btn btn-outline-danger btn-sm mr-2"
+                                data-toggle="modal" data-target={`#EditItemModal${item.id}`}>
+                                <i className="fas fa-edit"></i></button>
+                            <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${item.id}`}>
+                                <i className="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </td> : ''}
+                {/* Edit Modal */}
+                <EditProductModal item={item} role={this.props.role}/>
                 {/*  Delete Modal*/}
-                {/* <DelConfirmModal item={item} deleteMethod={this.handleDelete} objectID={item.id} /> */}
+                <DelConfirmModal item={item} deleteMethod={this.handleDelete} objectID={item.id} />
             </tr>)
         return (
             <div className="container" style={{ height: "100vh" }}>
@@ -79,7 +82,7 @@ class ProductTable extends Component {
                                                                 <th scope="col">Giá</th>
                                                                 <th scope="col">Mô tả</th>
                                                                 <th scope="col">Số lượng</th>
-                                                                {/* <th scope="col">Actions</th> */}
+                                                                {this.props.role == 'admin' ? <th scope="col">Actions</th> : ''}
                                                             </tr>
                                                         </thead>
                                                         <tbody>

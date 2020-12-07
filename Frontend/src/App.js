@@ -43,7 +43,7 @@ class App extends Component {
                 return <StoreInfo />
               }} />
               <Route exact path="/admin/items" render={(props) => {
-                return <ProductPage />
+                return <ProductPage role='admin' />
               }} />
               <Route exact path="/manager" render={(props) => {
                 return (
@@ -58,7 +58,7 @@ class App extends Component {
               <Route exact path="/manager/items" render={(props) => {
                 return (
                   <div>
-                    <ProductPage />
+                    <ProductPage role='manager' />
                   </div>
                 )
               }} />

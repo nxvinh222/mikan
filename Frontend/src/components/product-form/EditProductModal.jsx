@@ -17,7 +17,7 @@ export default class EditProductModal extends Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <ProductForm item={this.props.item} action="edit" />
+                                <ProductForm item={this.props.item} role={this.props.role} action="edit" />
                             </div>
                         </div>
                     </div>
