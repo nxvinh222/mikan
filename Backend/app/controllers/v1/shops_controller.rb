@@ -100,7 +100,11 @@ class V1::ShopsController < ApplicationController
         @shop = Shop.where(id: params[:id]).first
         @revenue = @shop.item_quantity
         @revenue = @revenue.map{|revenue|
-            revenue.sold
+            {   
+                shop_id: revenue.shop_id,
+                item_id: revenue.item_id,
+                sold: revenue.sold
+            }
         }
 
         render json: @revenue
