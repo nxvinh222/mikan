@@ -7,7 +7,7 @@ export default class Login extends Component {
     state = {
         username: '',
         password: '',
-        role: ''
+        errMessage: ''
     }
 
     // Khi bấm nút back thì phải đăng nhập lại
@@ -29,24 +29,27 @@ export default class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        // axios
-        //     .post(`/v1/login`, {
-        //         username: this.state.username,
-        //         password: this.state.password
-        //     })
-        //     .then(data => {
-                localStorage.setItem('username', 'admin');
-                localStorage.setItem('role', 'admin');
-                // if (data.data.role === 'manager')
-                //     localStorage.setItem('storeID', data.data.shop_id);
-                window.location.href = `/${this.state.role}`;
-                // console.log(this.state.role);
-            // })
-            // .catch(err => console.log(err))
-        // localStorage.setItem('username', this.state.username);
-        // if (this.state.role === "manager")
-        //     localStorage.setItem("storeID", "5");
-        // window.location.href = `/${this.state.role}`;
+        axios
+            .post(`/v1/login`, {
+                username: this.state.username,
+                password: this.state.password
+            })
+            .then(data => {
+                console.log(data.data);
+                if (data.data.loginSuccess) {
+                    this.setState({ errMessage: '' });
+                    if (data.data.admin) {
+                        localStorage.setItem('username', 'admin');
+                        window.location.href = '/admin';
+                    } else {
+                        localStorage.setItem('username', data.data.shop_id);
+                        window.location.href = '/manager';
+                    }
+                } else {
+                    this.setState({ errMessage: data.data.message });
+                }
+            })
+            .catch(err => alert(err))
     }
 
     render() {
@@ -74,12 +77,9 @@ export default class Login extends Component {
                                                 value={this.state.password} onChange={this.handleChange} />
                                             <label htmlFor="inputPassword">Mật khẩu</label>
                                         </div>
-                                        {/* <a className="d-block text-center mt-2 small" href="#">Sign In</a> */}
+                                        <p style={{ color: "red", marginLeft: "15px" }}> {this.state.errMessage}</p>
                                         <hr className="my-4" />
-                                        <button className="btn btn-lg btn-admin btn-block text-uppercase" type="submit" name="role" value="admin"
-                                            onClick={this.handleChange}><i className="fas fa-chart-bar mr-2" />Là Quản trị viên</button>
-                                        <button className="btn btn-lg btn-manager btn-block text-uppercase" type="submit" name="role" value="manager"
-                                            onClick={this.handleChange}><i className="fas fa-store mr-2" />Là Quản lý cửa hàng</button>
+                                        <button className="btn btn-lg btn-manager btn-block text-uppercase" type="submit">Đăng nhập</button>
                                     </form>
                                 </div>
                             </div>
