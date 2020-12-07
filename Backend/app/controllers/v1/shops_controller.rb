@@ -100,9 +100,12 @@ class V1::ShopsController < ApplicationController
         @shop = Shop.where(id: params[:id]).first
         @revenue = @shop.item_quantity
         @revenue = @revenue.map{|revenue|
+            item = revenue.item
             {   
                 shop_id: revenue.shop_id,
                 item_id: revenue.item_id,
+                name: item.item_name,
+                price: item.price,
                 sold: revenue.sold
             }
         }
