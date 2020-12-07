@@ -13,7 +13,7 @@ class ProductTable extends Component {
 
     componentDidMount() {
         axios
-            .get(`/v1/shops/1/items`)
+            .get(`/v1/shops/${window.localStorage.getItem('username')}/items`)
             .then(data => {
                 this.setState({
                     items: data.data
@@ -26,13 +26,13 @@ class ProductTable extends Component {
     handleDelete = (itemID) => {
         // console.log(this.props.storeID);
         axios
-        .delete(`/v1/shops/1/${itemID}`)
-        .then(data => {
-            console.log(data.data);
-            alert("Xóa sản phẩm thành công");  
-            window.location.reload();
-        })
-        .catch(err => alert(err.message))
+            .delete(`/v1/shops/${window.localStorage.getItem('username')}/${itemID}`)
+            .then(data => {
+                console.log(data.data);
+                alert("Xóa sản phẩm thành công");
+                window.location.reload();
+            })
+            .catch(err => alert(err.message))
     }
 
     render() {
@@ -64,6 +64,7 @@ class ProductTable extends Component {
             </tr>)
         return (
             <div className="container" style={{ height: "100vh" }}>
+                <button type="button" className="btn btn-dark" data-toggle="modal" data-target="#addModal"><i className="fas fa-plus mr-2" />Thêm sản phẩm</button>
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-employee card-margin">

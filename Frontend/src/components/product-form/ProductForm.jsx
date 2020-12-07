@@ -23,35 +23,36 @@ export default class ProductFrom extends Component {
 
     handleAddSubmit = (event) => {
         event.preventDefault();
-        // console.log(this.state)
-        // axios
-        //     .post(`/v1/shops/1/items`, {
-        //         item_name: this.state.item_name,
-        //         price: this.state.price,
-        //         description: this.state.description,
-        //         quantity: this.state.quantity
-        //     })
-        //     .then(() => {
-        //         window.location.href = '/'
-        //     })
-        //     .catch(err => console.log(err))
+        console.log(this.state)
+        axios
+            .post(`/v1/shops/items`, {
+                item_name: this.state.item_name,
+                price: this.state.price,
+                description: this.state.description,
+                quantity: this.state.quantity,
+                id: window.localStorage.getItem('username')
+            })
+            .then(() => {
+                window.location.href = '/'
+            })
+            .catch(err => console.log(err))
 
     }
 
     handleEditSubmit = (event) => {
         event.preventDefault();
-        // console.log(this.state)
-        // axios
-        //     .put(`/v1/shops/1/items/${this.props.item.id}`, {
-        //         item_name: this.state.item_name,
-        //         price: this.state.price,
-        //         description: this.state.description,
-        //         quantity: this.state.quantity
-        //     })
-        //     .then(() => {
-        //         window.location.href = '/'
-        //     })
-        //     .catch(err => console.log(err))
+        console.log(this.state)
+        axios
+            .put(`/v1/shops/${window.localStorage.getItem('username')}/items/${this.props.item.id}`, {
+                item_name: this.state.item_name,
+                price: this.state.price,
+                description: this.state.description,
+                quantity: this.state.quantity
+            })
+            .then(() => {
+                window.location.href = '/'
+            })
+            .catch(err => console.log(err))
     }
 
     render() {
@@ -64,13 +65,13 @@ export default class ProductFrom extends Component {
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="form_name">Tên sản phẩm<span className="required"> *</span></label>
-                                        <input id="form_name" name="item_name" value={this.state.item_name} type="text" className="form-control" required="required" defaultValue={this.props.item.item_name} onChange={this.handleChange} />
+                                        <input id="form_name" name="item_name" value={this.state.item_name} type="text" className="form-control" required="required" onChange={this.handleChange} />
                                     </div>
                                 </div>
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="form_number">Giá bán (VND) <span className="required"> *</span></label>
-                                        <input id="form_number" name="price" value={this.state.price} type="text" className="form-control" required="required" defaultValue={this.props.item.price} onChange={this.handleChange} />
+                                        <input id="form_number" name="price" value={this.state.price} type="text" className="form-control" required="required" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +79,7 @@ export default class ProductFrom extends Component {
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="form_remain">Tồn kho<span className="required"> *</span></label>
-                                        <input id="form_remain" name="quantity" value={this.state.quantity} type="text" className="form-control" required="required" defaultValue={this.props.item.quantity} onChange={this.handleChange} />
+                                        <input id="form_remain" name="quantity" value={this.state.quantity} type="text" className="form-control" required="required" onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div>
@@ -86,17 +87,9 @@ export default class ProductFrom extends Component {
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="form_message">Mô tả</label>
-                                        <textarea id="form_message" name="description" value={this.state.description} className="form-control" rows={3} defaultValue={this.props.item.description} onChange={this.handleChange} />
+                                        <textarea id="form_message" name="description" value={this.state.description} className="form-control" rows={3} onChange={this.handleChange} />
                                     </div>
                                 </div>
-                            </div>
-                            <div className="upload-area">
-                                <i className="fas fa-cloud-upload-alt upload-icon"></i>
-                                <input type="file" id="customFile" />
-                                {/* <img src=""/> */}
-                            </div>
-                            <div className="alert alert-success" role="alert">
-                                This is a success alert—check it out!
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
