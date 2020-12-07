@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../assets/css/table.css'
-import Toolbar from './Toolbar'
 import axios from '../axios.js'
 import AddProductModal from './product-form/AddProductModal'
 import DelConfirmModal from './DelConfirmModal'
@@ -65,7 +64,6 @@ class ProductTable extends Component {
             </tr>)
         return (
             <div className="container" style={{ height: "100vh" }}>
-                <Toolbar />
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-employee card-margin">

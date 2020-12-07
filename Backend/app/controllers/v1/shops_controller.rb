@@ -87,12 +87,30 @@ class V1::ShopsController < ApplicationController
     end
 
 
-    #GET /shop/:id/employees
+    #GET /shops/:id/employees
     def getEmployees
         @shop = Shop.where(id: params[:id]).first
         @employees = @shop.employee
 
         render json: @employees
+    end
+
+    #GET /shops/:id/revenue
+    def getRevenue
+        @shop = Shop.where(id: params[:id]).first
+        @revenue = @shop.item_quantity
+        @revenue = @revenue.map{|revenue|
+            item = revenue.item
+            {   
+                shop_id: revenue.shop_id,
+                item_id: revenue.item_id,
+                name: item.item_name,
+                price: item.price,
+                sold: revenue.sold
+            }
+        }
+
+        render json: @revenue
     end
 
     private
