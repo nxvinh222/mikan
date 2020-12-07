@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :sessions , only: [:create, :destroy]
     get '/test', to: 'shops#test'
     get '/shops/:id/items', to: 'shops#getItems'
+    post '/shops/items', to: 'item_quantities#addItems'
     get '/shops/:id/employees', to: 'shops#getEmployees'
 
     resources :items

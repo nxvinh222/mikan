@@ -8,6 +8,7 @@ class V1::SessionsController < ApplicationController
         loginSuccess: true,
         username: user.username,
         admin: user.admin,
+        shop_id: user.shop_id,
         message: "Login success"
       }, status: :ok
     else
