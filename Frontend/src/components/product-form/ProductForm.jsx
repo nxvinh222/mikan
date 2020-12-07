@@ -32,7 +32,7 @@ export default class ProductFrom extends Component {
         //         quantity: this.state.quantity
         //     })
         //     .then(() => {
-        //         window.location.href = '/v1/shops/1/items'
+        //         window.location.href = '/'
         //     })
         //     .catch(err => console.log(err))
 
@@ -42,14 +42,14 @@ export default class ProductFrom extends Component {
         event.preventDefault();
         // console.log(this.state)
         // axios
-        //     .put(`/v1/shops/1/items`, {
+        //     .put(`/v1/shops/1/items/${this.props.item.id}`, {
         //         item_name: this.state.item_name,
         //         price: this.state.price,
         //         description: this.state.description,
         //         quantity: this.state.quantity
         //     })
         //     .then(() => {
-        //         window.location.href = '/v1/shops/1/items'
+        //         window.location.href = '/'
         //     })
         //     .catch(err => console.log(err))
     }

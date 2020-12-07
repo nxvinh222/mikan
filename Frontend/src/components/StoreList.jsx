@@ -7,6 +7,7 @@ import Toolbar from './Toolbar';
 import NewStoreModal from './store-form/NewStoreModal';
 import EditStoreModal from './store-form/EditStoreModal';
 import DelConfirmModel from './DelConfirmModal';
+import ChangePassModal from './store-form/ChangePassModal.jsx';
 
 const pageSize = 3;
 
@@ -119,13 +120,16 @@ export default class StoreList extends Component {
                                                             </div>
                                                             <div className="col-4">
                                                                 <div className="store-btn">
+                                                                    <button type="button" className="btn btn-outline-success btn-sm" data-toggle="modal" data-target={`#changePassModal${store.id}`}>
+                                                                        <i className="fas fa-key"></i>
+                                                                    </button>
                                                                     <button type="button" className="btn btn-outline-danger btn-sm "
                                                                         data-toggle="modal" data-target={`#editModal${store.id}`}>
                                                                         <i className="fas fa-edit"></i></button>
                                                                     <button type="button" className="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target={`#delModal${store.id}`}>
                                                                         <i className="fas fa-trash-alt"></i>
                                                                     </button>
-
+                                                                    <ChangePassModal storeID={store.id} />
                                                                     <EditStoreModal store={store} />
                                                                     <DelConfirmModel objectID={store.id} deleteMethod={this.handleDelete} />
                                                                 </div>
