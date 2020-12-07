@@ -1,5 +1,5 @@
 class V1::SessionsController < ApplicationController
-  include SessionsHelper
+
 
 	def create
     user = User.where(username: params[:session][:username]).first
