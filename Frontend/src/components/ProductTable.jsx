@@ -59,9 +59,9 @@ class ProductTable extends Component {
                 {/* <DelConfirmModal item={item} deleteMethod={this.handleDelete} objectID={item.id} /> */}
             </tr>)
         return (
-            <div className="container" style={{ height: "100vh" }}>
+            <div className="container">
                 <button type="button" className="btn btn-dark" data-toggle="modal" data-target="#addModal"><i className="fas fa-plus mr-2" />Thêm sản phẩm</button>
-                <div className="row">
+                <div className="row mt-3">
                     <div className="col-12">
                         <div className="card card-employee card-margin">
                             <div className="card-body">
@@ -91,26 +91,6 @@ class ProductTable extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <nav className="d-flex justify-content-center">
-                                    <ul className="pagination pagination-base pagination-boxed pagination-square mb-0">
-                                        <li className="page-item">
-                                            <a className="page-link no-border" href="#">
-                                                <span aria-hidden="true">«</span>
-                                                <span className="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li className="page-item active"><a className="page-link no-border" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link no-border" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link no-border" href="#">3</a></li>
-                                        <li className="page-item"><a className="page-link no-border" href="#">4</a></li>
-                                        <li className="page-item">
-                                            <a className="page-link no-border" href="#">
-                                                <span aria-hidden="true">»</span>
-                                                <span className="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
                             </div>
                         </div>
                     </div>

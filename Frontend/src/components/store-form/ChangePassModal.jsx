@@ -24,17 +24,19 @@ export default class ChangePassModal extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
-        // axios
-        //     .put(`/v1/shops/${this.props.store.id}`, {
-
-        //     })
-        //     .then(data => {
-        //         // console.log('The form was submitted with the following data:');
-        //         // console.log(data.data);
-        //         alert("Sửa thông tin thành công");
-        //         window.location.reload();
-        //     })
-        //     .catch(err => alert(err.message))
+        axios
+            .put(`/v1/change_password`, {
+                username: `shop-${this.props.storeID}`,
+                password: this.state.managerPass,
+                password_confirmation: this.state.managerPass
+            })
+            .then(data => {
+                console.log('The form was submitted with the following data:');
+                console.log(data.data);
+                alert("Đổi mật khẩu thành công");
+                window.location.reload();
+            })
+            .catch(err => alert(err.message))
     }
 
     render() {
