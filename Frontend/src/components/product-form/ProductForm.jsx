@@ -7,7 +7,12 @@ export default class ProductFrom extends Component {
     state = {
         itemNameList: [],
         item_id: '',
-        quantity: ''
+        quantity: 0,
+        id: this.props.item.item_id,
+        item_name: this.props.item.item_name,
+        price: this.props.item.price,
+        description: this.props.item.description,
+        quantity: this.props.item.quantity
     };
 
     componentDidMount() {
@@ -44,16 +49,30 @@ export default class ProductFrom extends Component {
         // if(itemNameList.map(function(e) { return e.id; }).indexOf(item_id)){
 
         // }
-        axios
-            .post(`/v1/shops/items`, {
-                item_id: this.state.item_id,
-                quantity: this.state.quantity,
-                shop_id: window.localStorage.getItem('username')
-            })
-            .then(() => {
-                window.location.href = '/manager/items'
-            })
-            .catch(err => console.log(err))
+        if (this.props.role == 'admin') {
+            axios
+                .post(`/v1/items`, {
+                    item_name: this.state.item_name,
+                    price: this.state.price,
+                    description: this.state.description,
+                    quantity: this.state.quantity
+                })
+                .then(() => {
+                    window.location.reload();
+                })
+                .catch(err => console.log(err))
+        } else {
+            axios
+                .post(`/v1/shops/items`, {
+                    item_id: this.state.item_id,
+                    quantity: this.state.quantity,
+                    shop_id: window.localStorage.getItem('username')
+                })
+                .then(() => {
+                    window.location.reload();
+                })
+                .catch(err => console.log(err))
+        }
     }
 
     handleEditSubmit = (event) => {
@@ -67,7 +86,7 @@ export default class ProductFrom extends Component {
                 quantity: this.state.quantity
             })
             .then(() => {
-                window.location.href = '/manager/items'
+                window.location.reload();
             })
             .catch(err => console.log(err))
     }
@@ -80,7 +99,7 @@ export default class ProductFrom extends Component {
                         <div className="controls">
                             <div className="row">
                                 {this.props.role == 'admin' ?
-                                    <div className="row">
+                                    <>
                                         <div className="col-md-12">
                                             <div className="form-group">
                                                 <label htmlFor="form_name">Tên sản phẩm<span className="required"> *</span></label>
@@ -93,7 +112,7 @@ export default class ProductFrom extends Component {
                                                 <input id="form_number" name="price" value={this.state.price} type="text" className="form-control" required="required" onChange={this.handleChange} />
                                             </div>
                                         </div>
-                                    </div> :
+                                    </> :
                                     <div className="col-md-12">
                                         <div className="form-group row">
                                             <label htmlFor="item-name" className="col-sm-4 col-form-label">Sản phẩm</label>
@@ -110,14 +129,15 @@ export default class ProductFrom extends Component {
                                     </div>
                                 }
                             </div>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <div className="form-group">
-                                        <label htmlFor="form_remain">Tồn kho<span className="required"> *</span></label>
-                                        <input id="form_remain" name="quantity" value={this.state.quantity} type="text" className="form-control" required="required" onChange={this.handleChange} />
+                            {this.props.role == 'admin' ? '' :
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="form-group">
+                                            <label htmlFor="form_remain">Tồn kho<span className="required"> *</span></label>
+                                            <input id="form_remain" name="quantity" value={this.state.quantity} type="text" className="form-control" required="required" onChange={this.handleChange} />
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div>}
                             {this.props.role == 'admin' ? <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">

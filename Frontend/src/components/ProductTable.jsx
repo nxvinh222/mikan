@@ -25,7 +25,7 @@ class ProductTable extends Component {
 
     handleDelete = (itemID) => {
         axios
-            .delete(`/v1/item/${itemID}`)
+            .delete(`/v1/items/${itemID}`)
             .then(data => {
                 console.log(data.data);
                 alert("Xóa sản phẩm thành công");
@@ -44,7 +44,7 @@ class ProductTable extends Component {
                 <td>{item.item_name}</td>
                 <td>{item.price}$</td>
                 <td>{item.description}</td>
-                <td>{item.quantity}</td>
+                {this.props.role == 'admin' ? '' : <td>{item.quantity}</td>}
                 {this.props.role == 'admin' ?
                     <td>
                         <div className="widget-26-job-starred">
@@ -63,7 +63,7 @@ class ProductTable extends Component {
             </tr>)
         return (
             <div className="container" style={{ height: "100vh" }}>
-                <button type="button" className="btn btn-dark" data-toggle="modal" data-target="#addModal"><i className="fas fa-plus mr-2" />Thêm sản phẩm</button>
+                <button type="button" className="btn btn-dark mb-3" data-toggle="modal" data-target="#addModal"><i className="fas fa-plus mr-2" />Thêm sản phẩm</button>
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-employee card-margin">
@@ -81,7 +81,7 @@ class ProductTable extends Component {
                                                                 <th scope="col">Tên sản phẩm</th>
                                                                 <th scope="col">Giá</th>
                                                                 <th scope="col">Mô tả</th>
-                                                                <th scope="col">Số lượng</th>
+                                                                {this.props.role == 'admin' ? '' : <th scope="col">Số lượng</th>}
                                                                 {this.props.role == 'admin' ? <th scope="col">Actions</th> : ''}
                                                             </tr>
                                                         </thead>
@@ -119,7 +119,7 @@ class ProductTable extends Component {
                     </div>
                 </div>
                 {/*  Add Modal*/}
-                <AddProductModal items={this.state.items} />
+                <AddProductModal items={this.state.items} role={this.props.role}/>
             </div>
         );
     }
