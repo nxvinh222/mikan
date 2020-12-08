@@ -50,7 +50,7 @@ export default class NewStoreModal extends Component {
                     .then(res => {
                         console.log('The form was submitted with the following data:');
                         console.log(res.data);
-                        alert("Tạo tài khoản quản lý thành công");
+                        alert("Tạo tài khoản quản lý thành công\n\nTài khoản: " + `shop-${data.data.id}`);
                         window.location.reload();
                     })
                     .catch(err => alert(err.message))
@@ -109,12 +109,19 @@ export default class NewStoreModal extends Component {
                                                 value={this.state.managerPhone} onChange={this.handleChange} />
                                         </div>
                                     </div>
+                                    <hr />
                                     <div className="form-group row">
                                         <label htmlFor="password" className="col-sm-4 col-form-label">Mật khẩu</label>
                                         <div className="col-sm-8">
                                             <input type="password" className="form-control" id="password" name="managerPass"
                                                 value={this.state.managerPass} onChange={this.handleChange} />
                                         </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-4"></div>
+                                        <label htmlFor="account" className="col-sm-8 col-form-label">
+                                            <i style={{fontSize: "0.8rem"}}>{`* Tên tài khoản sẽ tự động được tạo theo dạng: shop-{id}`}</i>
+                                        </label>
                                     </div>
                                     <div className="row">
                                         <div className="col-md-12">
