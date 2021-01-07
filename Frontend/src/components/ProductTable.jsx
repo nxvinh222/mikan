@@ -42,7 +42,7 @@ class ProductTable extends Component {
                     <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/sheep-3.jpg" className="img-fluid img-thumbnail" alt="Sheep" />
                 </td>
                 <td>{item.item_name}</td>
-                <td>{item.price}$</td>
+                <td>{item.price}đ</td>
                 <td>{item.description}</td>
                 {this.props.role == 'admin' ? '' : <td>{item.quantity}</td>}
                 {this.props.role == 'admin' ?

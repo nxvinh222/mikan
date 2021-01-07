@@ -95,28 +95,28 @@ export default class NewStaffModal extends Component {
                                     <div className="form-group row">
                                         <label htmlFor="name" className="col-sm-4 col-form-label">Tên nhân viên</label>
                                         <div className="col-sm-8">
-                                            <input className="form-control" id="name" name="name"
+                                            <input className="form-control" id="name" name="name" required required="required"
                                                 value={this.state.name} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="role" className="col-sm-4 col-form-label">Vị trí</label>
                                         <div className="col-sm-8">
-                                            <input className="form-control" id="role" name="role"
+                                            <input className="form-control" id="role" name="role" required
                                                 value={this.state.role} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="card" className="col-sm-4 col-form-label">Card ID</label>
                                         <div className="col-sm-8">
-                                            <input className="form-control" id="card" name="cardID"
+                                            <input className="form-control" id="card" name="cardID" required
                                                 value={this.state.cardID} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label htmlFor="phone" className="col-sm-4 col-form-label">Số điện thoại</label>
                                         <div className="col-sm-8">
-                                            <input className="form-control" id="phone" name="phone"
+                                            <input className="form-control" id="phone" name="phone" required
                                                 value={this.state.phone} onChange={this.handleChange} />
                                         </div>
                                     </div>

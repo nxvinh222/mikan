@@ -44,11 +44,6 @@ export default class ProductFrom extends Component {
 
     handleAddSubmit = (event) => {
         event.preventDefault();
-        // console.log(this.props.items.map(function(e) { return e.id; }).includes(this.state.item_id))
-        // console.log(this.state.item_id)
-        // if(itemNameList.map(function(e) { return e.id; }).indexOf(item_id)){
-
-        // }
         if (this.props.role == 'admin') {
             axios
                 .post(`/v1/items`, {
@@ -62,7 +57,11 @@ export default class ProductFrom extends Component {
                 })
                 .catch(err => console.log(err))
         } else {
-            axios
+            const result = this.props.items.find( ({ id }) => id == this.state.item_id );
+            if(result !== undefined) {
+                alert("Sản phẩm đã có sẵn trong cửa hàng.")
+            } else {
+                axios
                 .post(`/v1/shops/items`, {
                     item_id: this.state.item_id,
                     quantity: this.state.quantity,
@@ -72,6 +71,7 @@ export default class ProductFrom extends Component {
                     window.location.reload();
                 })
                 .catch(err => console.log(err))
+            }   
         }
     }
 
@@ -115,13 +115,13 @@ export default class ProductFrom extends Component {
                                         <div className="col-md-12">
                                             <div className="form-group">
                                                 <label htmlFor="form_name">Tên sản phẩm<span className="required"> *</span></label>
-                                                <input id="form_name" name="item_name" value={this.state.item_name} type="text" className="form-control" required="required" onChange={this.handleChange} />
+                                                <input id="form_name" name="item_name" value={this.state.item_name} type="text" required className="form-control" required="required" onChange={this.handleChange} />
                                             </div>
                                         </div>
                                         <div className="col-md-12">
                                             <div className="form-group">
                                                 <label htmlFor="form_number">Giá bán (VND) <span className="required"> *</span></label>
-                                                <input id="form_number" name="price" value={this.state.price} type="number" className="form-control" required="required" onChange={this.handleChange} />
+                                                <input id="form_number" name="price" value={this.state.price} type="number" required className="form-control" required="required" onChange={this.handleChange} />
                                             </div>
                                         </div>
                                     </> :
@@ -147,7 +147,7 @@ export default class ProductFrom extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label htmlFor="form_remain">Tồn kho<span className="required"> *</span></label>
-                                            <input id="form_remain" name="quantity" value={this.state.quantity} type="text" className="form-control" required="required" onChange={this.handleChange} />
+                                            <input id="form_remain" name="quantity" value={this.state.quantity} type="text" required className="form-control" required="required" onChange={this.handleChange} />
                                         </div>
                                     </div>
                                 </div>}
@@ -156,7 +156,7 @@ export default class ProductFrom extends Component {
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="form_message">Mô tả</label>
-                                        <textarea id="form_message" name="description" value={this.state.description} className="form-control" rows={3} onChange={this.handleChange} />
+                                        <textarea id="form_message" name="description" value={this.state.description} required className="form-control" rows={3} onChange={this.handleChange} />
                                     </div>
                                 </div>
                             </div> : ''}
