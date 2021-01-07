@@ -22,7 +22,7 @@ export default class Navbar extends Component {
                 {/* Navigation */}
                 <nav className="navbar navbar-expand-lg bg-orange navbar-dark" id="mainNav">
                     <div className="container navbar-container">
-                        <a className="navbar-brand js-scroll-trigger" href="#page-top">
+                        <a className="navbar-brand js-scroll-trigger" href={`/${this.props.role}`}>
                             <img
                                 src={logo}
                                 height="60rem"

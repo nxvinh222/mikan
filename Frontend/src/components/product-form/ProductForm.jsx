@@ -78,17 +78,29 @@ export default class ProductFrom extends Component {
     handleEditSubmit = (event) => {
         event.preventDefault();
         console.log(this.state)
-        axios
-            .put(`/v1/items/${this.props.item.id}`, {
-                item_name: this.state.item_name,
-                price: this.state.price,
-                description: this.state.description,
-                quantity: this.state.quantity
-            })
-            .then(() => {
-                window.location.reload();
-            })
-            .catch(err => console.log(err))
+        if (this.props.role == 'admin') {
+            axios
+                .put(`/v1/items/${this.props.item.id}`, {
+                    item_name: this.state.item_name,
+                    price: this.state.price,
+                    description: this.state.description,
+                    quantity: this.state.quantity
+                })
+                .then(() => {
+                    window.location.reload();
+                })
+                .catch(err => console.log(err))
+        } else {
+            axios
+                .put(`/v1/shops/${window.localStorage.getItem('username')}/items/${this.props.item.id}`, {
+                    quantity: this.state.quantity
+                })
+                .then(() => {
+                    window.location.reload();
+                })
+                .catch(err => console.log(err))
+        }
+
     }
 
     render() {
@@ -109,7 +121,7 @@ export default class ProductFrom extends Component {
                                         <div className="col-md-12">
                                             <div className="form-group">
                                                 <label htmlFor="form_number">Giá bán (VND) <span className="required"> *</span></label>
-                                                <input id="form_number" name="price" value={this.state.price} type="text" className="form-control" required="required" onChange={this.handleChange} />
+                                                <input id="form_number" name="price" value={this.state.price} type="number" className="form-control" required="required" onChange={this.handleChange} />
                                             </div>
                                         </div>
                                     </> :
@@ -117,13 +129,14 @@ export default class ProductFrom extends Component {
                                         <div className="form-group row">
                                             <label htmlFor="item-name" className="col-sm-4 col-form-label">Sản phẩm</label>
                                             <div className="col-sm-8">
+                                                {this.props.action == 'add' ? 
                                                 <select className="form-control" id="item-name" name="item_id" onChange={this.handleChange}>
                                                     {this.state.itemNameList.map((item) => {
                                                         return (
                                                             <option value={item.id}>{item.name}</option>
                                                         )
                                                     })}
-                                                </select>
+                                                </select> : this.state.item_name}
                                             </div>
                                         </div>
                                     </div>
@@ -138,7 +151,8 @@ export default class ProductFrom extends Component {
                                         </div>
                                     </div>
                                 </div>}
-                            {this.props.role == 'admin' ? <div className="row">
+                            {this.props.role == 'admin' ? 
+                            <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="form_message">Mô tả</label>

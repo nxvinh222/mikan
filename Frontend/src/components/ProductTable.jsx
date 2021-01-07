@@ -55,7 +55,14 @@ class ProductTable extends Component {
                                 <i className="fas fa-trash-alt"></i>
                             </button>
                         </div>
-                    </td> : ''}
+                    </td> : 
+                    <td>
+                        <div className="widget-26-job-starred">
+                            <button type="button" className="btn btn-outline-danger btn-sm mr-2"
+                                data-toggle="modal" data-target={`#EditItemModal${item.id}`}>
+                                <i className="fas fa-edit"></i></button>
+                        </div>
+                    </td>}
                 {/* Edit Modal */}
                 <EditProductModal item={item} role={this.props.role}/>
                 {/*  Delete Modal*/}
@@ -82,7 +89,7 @@ class ProductTable extends Component {
                                                                 <th scope="col">Giá</th>
                                                                 <th scope="col">Mô tả</th>
                                                                 {this.props.role == 'admin' ? '' : <th scope="col">Số lượng</th>}
-                                                                {this.props.role == 'admin' ? <th scope="col">Actions</th> : ''}
+                                                                <th scope="col"></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>

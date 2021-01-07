@@ -9,7 +9,7 @@ class ProductPage extends Component {
         return (
             <div>
                 <Navbar role={this.props.role} />
-                <div className="mt-3">
+                <div className="container mt-3" style={{ height: "100vh" }}>
                     <ProductTable role={this.props.role} />
                 </div>
                 <Footer />

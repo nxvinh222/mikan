@@ -12,7 +12,7 @@ class StoreInfo extends Component {
 
     componentDidMount() {
         axios
-            .get(`/v1/shops/1`)
+            .get(`/v1/shops/${window.localStorage.getItem('username')}`)
             .then(data => {
                 this.setState({
                     shop: data.data
@@ -26,7 +26,8 @@ class StoreInfo extends Component {
         return (
             <div>
                 <Navbar role="manager" />
-                <div className="col-sm-12 col-md-12 col-lg-12" style={{ height: "100vh"}}>
+                <div className="col-sm-12 col-md-12 col-lg-12" style={{ height: "100vh" }}>
+                    <h1 style={{ textAlign: "center" }}>Thông tin cửa hàng</h1>
                     {/* product */}
                     <div className="product-content product-wrap clearfix product-detail">
                         <div className="row">
@@ -76,21 +77,10 @@ class StoreInfo extends Component {
                                     <a href="javascript:void(0);">109 customer reviews</a>
                                 </h2>
                                 <hr />
-                                <button type="button" className="btn btn-dark"><span><i className="fas fa-phone-alt" /></span>Liên hệ<span className="text-bold font18 pl-2">0981524316</span></button>
+                                <a href='https://www.facebook.com/blacklotus22'><button type="button" className="btn btn-dark"><span><i className="fas fa-phone-alt" /></span>Liên hệ<span className="text-bold font18 pl-2">0981524316</span></button></a>
                                 <div><span><i className="far fa-clock" /></span>Người quản lý : {this.state.shop.manager_name}</div>
-                                <div><span><i className="fas fa-dollar-sign" /></span>Số điện thoại quản lý: {this.state.shop.manager_phone}</div>
+                                <div><span><i className="fas fa-phone-alt" /></span>Số điện thoại quản lý: {this.state.shop.manager_phone}</div>
                                 <hr />
-                                <div className="row">
-                                    <div className="col-sm-12 col-md-6 col-lg-6">
-                                        <a href="javascript:void(0);" className="btn btn-success btn-lg"><span><i className="far fa-thumbs-up"></i></span>Like</a>
-                                    </div>
-                                    <div className="col-sm-12 col-md-6 col-lg-6">
-                                        <div className="btn-group pull-right">
-                                            <button className="btn btn-white btn-default"><i className="fa fa-star" /> Add to wishlist</button>
-                                            <button className="btn btn-white btn-default"><i className="fa fa-envelope" /> Contact Seller</button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

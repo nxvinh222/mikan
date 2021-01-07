@@ -46,7 +46,7 @@ export default class StaffPage extends Component {
         return (
             <div>
                 <Navbar role="admin" />
-                <div className="container mt-3" style={{ height: "82vh" }}>
+                <div className="container mt-3" style={{ height: "100vh" }}>
                     <StaffTable staffList={this.state.results} role="manager" defaultStoreID={this.state.storeID}/>
                 </div>
                 {/* TODO: Co the phat trien them */}
