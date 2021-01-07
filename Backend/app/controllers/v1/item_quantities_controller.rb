@@ -12,13 +12,25 @@ class V1::ItemQuantitiesController < ApplicationController
         }
     end
 
-    #PUT /shops/items
-    # def editItems
-    #     @item_quantity = ItemQuantity.whe
-    # end
+    #PUT /shops/:id1/items/id2
+    def editItems
+        @item_quantity = ItemQuantity.where(shop_id: params[:id1], item_id: params[:id2]).first
+
+        if @item_quantity.update(edit_item_quantity_params)
+            render json:@item_quantity, status: :ok
+        else
+            head(:unprocessable_entity)
+        end
+
+
+    end
 
     private
     def item_quantity_params
         params.require(:item_quantity).permit(:shop_id, :item_id, :quantity)
+    end
+    private
+    def edit_item_quantity_params
+        params.require(:item_quantity).permit(:quantity)
     end
 end

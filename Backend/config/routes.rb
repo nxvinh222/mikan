@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get '/test', to: 'shops#test'
     get '/shops/:id/items', to: 'shops#getItems'
     post '/shops/items', to: 'item_quantities#addItems'
-    # put '/shops/items', to: 'item_quantities#editItems'
+    put '/shops/:id1/items/:id2', to: 'item_quantities#editItems'
     get '/shops/:id/employees', to: 'shops#getEmployees'
     get 'shops/:id/revenue', to: 'shops#getRevenue'
 
