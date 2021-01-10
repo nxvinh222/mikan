@@ -3,11 +3,13 @@ class V1::PasswordResetsController < ApplicationController
 
     def changePassword
         @user = User.where(username: params[:username]).first
-        @user.update(reset_passwords_params)
+        if @user.update(reset_passwords_params)
+            render json:{
+                succeed: @user
+            }
+        end
 
-        render json:{
-          succeed: @user
-        }
+
     end
 
     private

@@ -66,8 +66,9 @@ User.create!(
 )
 
 User.create!(
-    username: "manager",
+    username: "shop-1",
     password: "123456",
     shop_id: 1,
     admin: false
 )
+
