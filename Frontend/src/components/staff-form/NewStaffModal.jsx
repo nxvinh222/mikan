@@ -45,22 +45,27 @@ export default class NewStaffModal extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
-        axios
-            .post('/v1/employees', {
-                shop_id: this.state.storeID,
-                name: this.state.name,
-                id_card: this.state.cardID,
-                phone: this.state.phone,
-                role: this.state.role
-            })
-            .then(data => {
-                console.log('The form was submitted with the following data:');
-                console.log(data.data);
-                alert("Thêm nhân viên thành công");
-                window.location.reload();
-            })
-            .catch(err => alert(err.message))
+        var phoneno = /^\d{10}$/;
+        if (this.state.phone.match(phoneno)) {
+            axios
+                .post('/v1/employees', {
+                    shop_id: this.state.storeID,
+                    name: this.state.name,
+                    id_card: this.state.cardID,
+                    phone: this.state.phone,
+                    role: this.state.role
+                })
+                .then(data => {
+                    console.log('The form was submitted with the following data:');
+                    console.log(data.data);
+                    alert("Thêm nhân viên thành công");
+                    window.location.reload();
+                })
+                .catch(err => alert(err.message))
+        }
+        else {
+            alert("Số điện thoại không hợp lệ.");
+        }
     }
 
     render() {

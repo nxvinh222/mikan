@@ -42,24 +42,29 @@ export default class EditStaffModal extends Component {
             [name]: value
         });
     }
-
     handleSubmit = (e) => {
         e.preventDefault();
-        axios
-            .put(`/v1/employees/${this.props.staff.id}`, {
-                shop_id: this.state.storeID,
-                name: this.state.name,
-                id_card: this.state.cardID,
-                phone: this.state.phone,
-                role: this.state.role
-            })
-            .then(data => {
-                console.log('The form was submitted with the following data:');
-                console.log(data.data);
-                alert("Sửa thông tin thành công");
-                window.location.reload();
-            })
-            .catch(err => alert(err.message))
+        var phoneno = /^\d{10}$/;
+        if (this.state.phone.match(phoneno)){
+            axios
+                .put(`/v1/employees/${this.props.staff.id}`, {
+                    shop_id: this.state.storeID,
+                    name: this.state.name,
+                    id_card: this.state.cardID,
+                    phone: this.state.phone,
+                    role: this.state.role
+                })
+                .then(data => {
+                    console.log('The form was submitted with the following data:');
+                    console.log(data.data);
+                    alert("Sửa thông tin thành công");
+                    window.location.reload();
+                })
+                .catch(err => alert(err.message))
+        }
+        else {
+            alert("Số điện thoại không hợp lệ.");
+        }
     }
 
     render() {
